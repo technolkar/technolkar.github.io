@@ -188,6 +188,8 @@
     transition:filter .5s, transform .5s; }
   .proj:hover .shot{ filter:none; }
   .shot-wrap{ display:block; overflow:hidden; margin-top:1rem; }
+  .shot--video{ aspect-ratio:16/9; filter:none; }
+  .go a{ display:inline-block; margin-bottom:.45rem; }
   .proj-side{ display:block; }
   .shot-cap{ display:block; margin-top:.55rem; font-size:.6875rem;
     letter-spacing:.12em; text-transform:uppercase; color:var(--faint); }
@@ -454,16 +456,32 @@
     <article class="proj reveal">
       <div class="proj-side">
         <div class="ctx">THD Germany · 2024–25</div>
+        <span class="shot-wrap">
+          <video class="shot shot--video" data-src="./vr-sim.mp4" poster="./p-vr.jpg"
+                 muted loop playsinline preload="none"
+                 aria-label="Driving through the simulated city with pedestrians on the footpath"></video>
+          <span class="shot-cap">The pedestrian system, running</span>
+        </span>
       </div>
       <div>
-        <h3>Driver-Perspective Simulation in Unity</h3>
-        <p>Real-time VR driving simulation with dynamic day–night and weather systems,
-          physics-based vehicle models, AI pedestrian spawning with waypoint navigation and
-          adaptive traffic logic. Integrated external steering and pedal hardware with Meta
-          Quest VR. Team of seven — I led the team and the AI systems.</p>
-        <div class="tech">Unity 3D · C# · Meta Quest · AI navigation</div>
+        <h3>Driver-Perspective Active Safety System</h3>
+        <p>A four-level VR driving trainer built in Unity — day, night, fog and rain
+          conditions, autonomous emergency braking and ABS, crash detection with logged
+          reaction times, and an inverse-kinematics driver whose hands track the wheel.
+          It runs on a Meta Quest 3 with a HORI racing wheel and pedals. Seven-person team
+          at THD; I led it.</p>
+        <p><strong>My part was the pedestrian and traffic system.</strong> Mixamo characters
+          rigged with NavMesh agents, footpaths baked as the only walkable surface, an AI
+          spawner that clones pedestrians across the whole city, and a wander script that
+          sends each one to random footpath destinations — so the city fills with people who
+          distract the driver without ever stepping into the road. Traffic vehicles follow
+          waypoint routes on the same principle.</p>
+        <div class="tech">Unity 3D · C# · NavMesh · Mixamo · Meta Quest 3 · HORI wheel</div>
       </div>
-      <div class="go"><a href="https://github.com/technolkar/Driver-Perspective-Simulation-in-Unity" target="_blank" rel="noopener noreferrer">Repository →</a></div>
+      <div class="go">
+        <a href="https://github.com/technolkar/Driver-Perspective-Simulation-in-Unity" target="_blank" rel="noopener noreferrer">Repository →</a><br />
+        <a href="./cvar-paper.pdf" target="_blank" rel="noopener noreferrer">Project paper →</a>
+      </div>
     </article>
 
     <article class="proj reveal">
@@ -749,6 +767,24 @@
   }
   window.addEventListener('scroll', onScroll, { passive:true });
   onScroll();
+
+  /* play the simulation clip only once it is on screen */
+  (function(){
+    var vids = document.querySelectorAll('video[data-src]');
+    if (!vids.length) return;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !('IntersectionObserver' in window)) return;
+    var vo = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var v = e.target;
+        if (e.isIntersecting){
+          if (!v.src) { v.src = v.dataset.src; }
+          var pr = v.play(); if (pr && pr.catch) pr.catch(function(){});
+        } else if (!v.paused) { v.pause(); }
+      });
+    }, { threshold: 0.25 });
+    vids.forEach(function(v){ vo.observe(v); });
+  })();
 
   /* scroll reveal */
   var items = document.querySelectorAll('.reveal');
