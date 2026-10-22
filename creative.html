@@ -1,0 +1,745 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Ajay — Robotics Creator (alt design)</title>
+<meta name="description" content="Ajay Arjun Mannolkar — robotics and embedded systems. M.Sc. Mechatronics and Cyber-Physical Systems, Deggendorf Institute of Technology. Munich, Germany." />
+<meta property="og:title" content="Ajay — Robotics Creator" />
+<meta property="og:description" content="Robotics and embedded systems. 50+ DIY kits shipped, 200+ students trained, 203 build tutorials. M.Sc. Cyber-Physical Systems, THD." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://technolkar.github.io/hero.jpg" />
+<meta name="theme-color" content="#0C0C0C" />
+<meta name="color-scheme" content="dark" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Ajay Mannolkar" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230C0C0C'/><text y='70' x='50' text-anchor='middle' font-size='58' font-family='sans-serif' font-weight='900' fill='%23BBCCD7'>A</text></svg>" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#0C0C0C;
+    --ink:#D7E2EA;
+    --ink-dim:rgba(215,226,234,.62);
+    --ink-faint:rgba(215,226,234,.34);
+    --line:rgba(215,226,234,.16);
+    --pad:1.25rem;
+    color-scheme: dark;
+  }
+  @media (min-width:640px){ :root{ --pad:2rem; } }
+  @media (min-width:768px){ :root{ --pad:2.5rem; } }
+
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; background:var(--bg); overflow-x:clip; max-width:100%; }
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:'Kanit', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-weight:400; -webkit-font-smoothing:antialiased;
+    -webkit-text-size-adjust:100%; overflow-x:clip;
+  }
+  a{ color:inherit; text-decoration:none; }
+  img,video{ max-width:100%; display:block; }
+  ::selection{ background:#BBCCD7; color:#0C0C0C; }
+
+  .wrap{ width:100%; padding-left:max(var(--pad), env(safe-area-inset-left,0px));
+         padding-right:max(var(--pad), env(safe-area-inset-right,0px)); }
+  .inner{ max-width:82rem; margin:0 auto; }
+
+  /* ---------- gradient display type ---------- */
+  .grad{
+    background:linear-gradient(180deg,#646973 0%,#BBCCD7 100%);
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    font-weight:900; text-transform:uppercase;
+    letter-spacing:-.03em; line-height:.92;
+  }
+
+  /* ---------- buttons ---------- */
+  .btn-contact{
+    display:inline-block; border-radius:999px; color:#fff;
+    font-weight:500; text-transform:uppercase; letter-spacing:.14em;
+    padding:.75rem 2rem; font-size:.72rem;
+    background:linear-gradient(123deg,#18011F 7%,#B600A8 37%,#7621B0 72%,#BE4C00 100%);
+    box-shadow:0 4px 4px rgba(181,1,167,.25), 4px 4px 12px #7721B1 inset;
+    outline:2px solid #fff; outline-offset:-3px;
+    transition:transform .25s ease, filter .25s ease;
+  }
+  .btn-contact:hover{ transform:translateY(-2px); filter:brightness(1.12); }
+  @media (min-width:640px){ .btn-contact{ padding:.85rem 2.5rem; font-size:.8rem; } }
+  @media (min-width:768px){ .btn-contact{ padding:1rem 3rem; font-size:.9rem; } }
+
+  .btn-ghost{
+    display:inline-block; border-radius:999px; border:2px solid var(--ink);
+    color:var(--ink); font-weight:500; text-transform:uppercase; letter-spacing:.14em;
+    padding:.6rem 1.6rem; font-size:.72rem; transition:background .25s ease;
+    white-space:nowrap;
+  }
+  .btn-ghost:hover{ background:rgba(215,226,234,.1); }
+  @media (min-width:640px){ .btn-ghost{ padding:.7rem 2rem; font-size:.8rem; } }
+
+  /* ---------- HERO ---------- */
+  .hero{ min-height:100svh; display:flex; flex-direction:column; overflow-x:clip; position:relative; }
+  nav.bar{ display:flex; justify-content:space-between; align-items:center; gap:1rem;
+    padding-top:max(1.5rem, env(safe-area-inset-top,0px)); position:relative; z-index:30; }
+  nav.bar a{ color:var(--ink); font-weight:500; text-transform:uppercase; letter-spacing:.08em;
+    font-size:.8rem; transition:opacity .2s; }
+  nav.bar a:hover{ opacity:.7; }
+  @media (min-width:768px){ nav.bar{ padding-top:2rem; } nav.bar a{ font-size:1.05rem; } }
+  @media (min-width:1024px){ nav.bar a{ font-size:1.25rem; } }
+
+  .hero-title{ overflow:hidden; position:relative; z-index:20; pointer-events:none; }
+  .hero-title h1{ font-size:12.6vw; white-space:nowrap; width:100%; margin-top:1.2rem; }
+  @media (min-width:640px){ .hero-title h1{ font-size:13vw; margin-top:.8rem; } }
+  @media (min-width:768px){ .hero-title h1{ font-size:13.4vw; margin-top:-.6rem; } }
+  @media (min-width:1024px){ .hero-title h1{ font-size:13.6vw; } }
+
+  .hero-portrait{
+    position:absolute; left:0; right:0; margin-inline:auto; z-index:10;
+    width:260px; bottom:12%;
+  }
+  @media (min-width:640px){ .hero-portrait{ width:330px; bottom:0; } }
+  @media (min-width:768px){ .hero-portrait{ width:400px; } }
+  @media (min-width:1024px){ .hero-portrait{ width:470px; } }
+  .magnet{ will-change:transform; transition:transform .6s ease-in-out; }
+  .hero-portrait img{ width:100%; border-radius:28px 28px 0 0;
+    -webkit-mask-image:linear-gradient(to bottom,#000 72%,transparent 100%);
+    mask-image:linear-gradient(to bottom,#000 72%,transparent 100%); }
+
+  .hero-foot{ margin-top:auto; display:flex; justify-content:space-between; align-items:flex-end;
+    gap:1.5rem; padding-bottom:1.75rem; position:relative; z-index:20; }
+  @media (min-width:768px){ .hero-foot{ padding-bottom:2.5rem; } }
+  .hero-foot p{ color:var(--ink); font-weight:300; text-transform:uppercase;
+    letter-spacing:.05em; line-height:1.3; font-size:clamp(.7rem,1.4vw,1.4rem);
+    max-width:170px; }
+  @media (min-width:640px){ .hero-foot p{ max-width:230px; } }
+  @media (min-width:768px){ .hero-foot p{ max-width:270px; } }
+
+  /* ---------- MARQUEE ---------- */
+  .marquee-sec{ padding-top:5rem; padding-bottom:2.5rem; overflow:hidden; }
+  @media (min-width:768px){ .marquee-sec{ padding-top:9rem; } }
+  .m-row{ display:flex; gap:.75rem; margin-bottom:.75rem; will-change:transform; }
+  .m-row img{ width:300px; height:195px; object-fit:cover; border-radius:1rem; flex:0 0 auto; }
+  @media (min-width:768px){ .m-row img{ width:420px; height:270px; } }
+
+  /* ---------- SECTION SHELL ---------- */
+  .sec{ padding-top:5rem; padding-bottom:5rem; }
+  @media (min-width:768px){ .sec{ padding-top:8rem; padding-bottom:8rem; } }
+  .display{ font-size:clamp(2.6rem,12vw,150px); text-align:center; }
+  .eyebrow{ font-size:.7rem; letter-spacing:.24em; text-transform:uppercase;
+    color:var(--ink-faint); text-align:center; margin-bottom:1.1rem; font-weight:500; }
+
+  /* ---------- ABOUT ---------- */
+  .about{ position:relative; min-height:100svh; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; text-align:center; }
+  .about-deco{ position:absolute; border-radius:1.25rem; object-fit:cover; opacity:.5;
+    filter:grayscale(.4); pointer-events:none; }
+  .d1{ width:96px; top:3%; left:1%; }
+  .d2{ width:84px; bottom:7%; left:3%; }
+  .d3{ width:96px; top:3%; right:1%; }
+  .d4{ width:104px; bottom:7%; right:3%; }
+  @media (min-width:640px){ .d1,.d3{ width:140px; } .d2{ width:120px; } .d4{ width:150px; }
+    .d1{left:2%} .d3{right:2%} .d2{left:5%} .d4{right:5%} }
+  @media (min-width:768px){ .d1,.d3{ width:190px; } .d2{ width:160px; } .d4{ width:200px; }
+    .d1{left:4%} .d3{right:4%} .d2{left:9%} .d4{right:9%} }
+  .about-text{ max-width:600px; margin:2.5rem auto 0; color:var(--ink);
+    font-weight:500; line-height:1.65; font-size:clamp(1rem,2vw,1.3rem); }
+  .about-text span.ch{ opacity:.2; transition:opacity .18s linear; }
+  .about-stats{ display:flex; flex-wrap:wrap; justify-content:center; gap:2rem 3rem;
+    margin:3rem auto 0; }
+  .about-stats div{ text-align:center; }
+  .about-stats b{ display:block; font-weight:800; font-size:clamp(1.8rem,4vw,2.9rem);
+    line-height:1; background:linear-gradient(180deg,#646973 0%,#BBCCD7 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .about-stats span{ display:block; margin-top:.45rem; font-size:.66rem; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--ink-faint); }
+
+  /* ---------- PROJECTS (sticky stack) ---------- */
+  .proj-stack{ position:relative; }
+  .card-wrap{ height:96svh; display:flex; align-items:flex-start; justify-content:center;
+    position:relative; }
+  @media (max-width:767px){ .card-wrap{ height:auto; margin-bottom:1.25rem; } }
+  .card{
+    position:sticky; width:100%; max-width:80rem;
+    border:2px solid var(--ink); border-radius:34px; background:var(--bg);
+    padding:1.1rem; transform-origin:top center; will-change:transform;
+  }
+  @media (min-width:768px){ .card{ border-radius:52px; padding:1.75rem; } }
+  @media (max-width:767px){ .card{ position:relative; top:0 !important; } }
+  .card-top{ display:flex; align-items:flex-start; justify-content:space-between;
+    gap:1rem; flex-wrap:wrap; padding:.4rem .5rem 1.1rem; }
+  .card-num{ font-weight:900; line-height:.8; font-size:clamp(2.4rem,8vw,6.5rem);
+    color:var(--ink); opacity:.9; }
+  .card-id{ display:flex; gap:1rem; align-items:flex-start; min-width:0; }
+  .card-meta{ min-width:0; }
+  .card-cat{ font-size:.64rem; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--ink-faint); margin-bottom:.3rem; font-weight:500; }
+  .card-meta h3{ font-weight:600; text-transform:uppercase; letter-spacing:-.01em;
+    font-size:clamp(1rem,2.2vw,1.9rem); line-height:1.1; }
+  .card-body{ display:grid; grid-template-columns:1fr; gap:1rem; }
+  @media (min-width:900px){ .card-body{ grid-template-columns:1fr 1.15fr; gap:1.5rem; align-items:stretch; } }
+  .card-copy{ padding:.4rem .5rem; display:flex; flex-direction:column; }
+  .card-copy p{ color:var(--ink-dim); font-weight:300; line-height:1.6;
+    font-size:clamp(.85rem,1.5vw,1.05rem); margin-bottom:.8rem; }
+  .card-copy p strong{ color:var(--ink); font-weight:500; }
+  .card-tech{ font-size:.75rem; color:var(--ink-faint); letter-spacing:.04em; margin-top:auto;
+    padding-top:.8rem; }
+  .card-links{ display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1rem; }
+  .card-media{ border-radius:26px; overflow:hidden; background:#141418; min-height:200px; }
+  @media (min-width:768px){ .card-media{ border-radius:40px; } }
+  .card-media img,.card-media video{ width:100%; height:100%; min-height:200px;
+    object-fit:cover; aspect-ratio:4/3; }
+  .card-media video{ aspect-ratio:16/9; }
+  .card-media.empty{ display:flex; align-items:center; justify-content:center;
+    border:1px dashed var(--line); color:var(--ink-faint); font-size:.72rem;
+    letter-spacing:.18em; text-transform:uppercase; text-align:center; padding:2rem; }
+
+  /* ---------- EXPERIENCE / EDUCATION rows ---------- */
+  .row{ display:grid; grid-template-columns:1fr; gap:.5rem; padding:2rem 0;
+    border-top:1px solid var(--line); }
+  @media (min-width:900px){ .row{ grid-template-columns:13rem 1fr; gap:3rem; align-items:start; } }
+  .row .when{ font-size:.78rem; color:var(--ink-faint); letter-spacing:.06em;
+    text-transform:uppercase; padding-top:.3rem; }
+  .row h3{ font-weight:500; font-size:1.15rem; margin-bottom:.2rem; }
+  .row .org{ color:var(--ink-dim); font-size:.92rem; margin-bottom:.8rem; font-weight:300; }
+  .row ul{ list-style:none; }
+  .row li{ color:var(--ink-dim); font-weight:300; font-size:.95rem; line-height:1.6;
+    padding-left:1.1rem; position:relative; margin-bottom:.35rem; }
+  .row li::before{ content:"—"; position:absolute; left:0; color:var(--ink-faint); }
+  .row li strong{ color:var(--ink); font-weight:500; }
+
+  /* ---------- SKILLS (light band) ---------- */
+  .skills{ background:#fff; color:#0C0C0C;
+    border-radius:34px 34px 0 0; padding-top:5rem; padding-bottom:5rem; }
+  @media (min-width:768px){ .skills{ border-radius:60px 60px 0 0; padding-top:8rem; padding-bottom:8rem; } }
+  .skills h2{ color:#0C0C0C; font-weight:900; text-transform:uppercase; text-align:center;
+    letter-spacing:-.03em; font-size:clamp(2.6rem,12vw,150px); line-height:.92;
+    margin-bottom:3rem; }
+  @media (min-width:768px){ .skills h2{ margin-bottom:6rem; } }
+  .skills .eyebrow{ color:rgba(12,12,12,.4); }
+  .sk{ max-width:64rem; margin:0 auto; }
+  .sk-item{ display:flex; gap:1.25rem; align-items:flex-start; padding:1.75rem 0;
+    border-top:1px solid rgba(12,12,12,.15); }
+  .sk-item:last-child{ border-bottom:1px solid rgba(12,12,12,.15); }
+  @media (min-width:768px){ .sk-item{ gap:2.5rem; padding:3rem 0; } }
+  .sk-num{ font-weight:900; line-height:.8; font-size:clamp(2.2rem,9vw,7rem); color:#0C0C0C; }
+  .sk-body h3{ font-weight:500; text-transform:uppercase;
+    font-size:clamp(1rem,2.2vw,2rem); margin-bottom:.5rem; }
+  .sk-body p{ font-weight:300; line-height:1.65; max-width:42rem; opacity:.6;
+    font-size:clamp(.85rem,1.6vw,1.2rem); }
+
+  /* ---------- CONTACT ---------- */
+  .contact{ background:var(--bg); border-radius:34px 34px 0 0; margin-top:-2.5rem;
+    position:relative; z-index:5; text-align:center; }
+  @media (min-width:768px){ .contact{ border-radius:60px 60px 0 0; margin-top:-3.5rem; } }
+  .mail{ display:inline-block; margin:1.5rem auto 0; color:var(--ink); font-weight:400;
+    font-size:clamp(1rem,3vw,1.9rem); border-bottom:1px solid var(--line);
+    padding-bottom:.3rem; transition:border-color .3s; word-break:break-word; }
+  .mail:hover{ border-color:var(--ink); }
+  .elsewhere{ display:flex; flex-wrap:wrap; justify-content:center; gap:1.5rem;
+    margin-top:2.25rem; font-size:.92rem; }
+  .elsewhere a{ color:var(--ink-dim); transition:color .3s; }
+  .elsewhere a:hover{ color:var(--ink); }
+  footer.end{ border-top:1px solid var(--line); margin-top:4rem; padding:2rem 0 3rem;
+    font-size:.72rem; color:var(--ink-faint); display:flex; justify-content:space-between;
+    gap:1rem; flex-wrap:wrap; text-align:left; }
+
+  /* ---------- reveal ---------- */
+  .js .fade{ opacity:0; transform:translateY(30px);
+    transition:opacity .7s cubic-bezier(.25,.1,.25,1), transform .7s cubic-bezier(.25,.1,.25,1); }
+  .js .fade.in{ opacity:1; transform:none; }
+  .js .fade.fx{ transform:translateX(-70px); }
+  .js .fade.fx-r{ transform:translateX(70px); }
+  .js .fade.fx.in,.js .fade.fx-r.in{ transform:none; }
+
+  @media (prefers-reduced-motion:reduce){
+    html{ scroll-behavior:auto; }
+    .js .fade{ opacity:1 !important; transform:none !important; }
+    .about-text span.ch{ opacity:1 !important; }
+    .magnet{ transition:none !important; transform:none !important; }
+    *,*::before,*::after{ transition-duration:.01ms !important; animation-duration:.01ms !important; }
+  }
+</style>
+</head>
+<body>
+<div style="position:fixed;left:0;right:0;bottom:0;z-index:99;background:#15171b;border-top:1px solid rgba(215,226,234,.18);padding:.6rem 1rem;text-align:center;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-family:'Kanit',sans-serif;color:#D7E2EA">
+Alternate design · <a href="./" style="color:#BBCCD7;text-decoration:underline">back to the main site</a></div>
+
+<!-- ====================== HERO ====================== -->
+<section class="hero" id="top">
+  <div class="wrap inner">
+    <nav class="bar fade">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+
+  <div class="hero-title fade">
+    <div class="wrap"><h1 class="grad">Hi, i&apos;m ajay</h1></div>
+  </div>
+
+  <div class="hero-portrait fade" id="portrait">
+    <div class="magnet" id="magnet"><img src="./portrait.jpg" alt="Ajay Arjun Mannolkar" /></div>
+  </div>
+
+  <div class="wrap inner hero-foot">
+    <p class="fade">a robotics and embedded engineer building machines that work in an actual room</p>
+    <a class="btn-contact fade" href="#contact">Contact Me</a>
+  </div>
+</section>
+
+<!-- ====================== MARQUEE ====================== -->
+<section class="marquee-sec" aria-hidden="true">
+  <div class="m-row" id="row1"></div>
+  <div class="m-row" id="row2"></div>
+</section>
+
+<!-- ====================== ABOUT ====================== -->
+<section class="sec about wrap" id="about">
+  <img class="about-deco d1 fade fx" src="./p-humanoid.jpg" alt="" loading="lazy" />
+  <img class="about-deco d2 fade fx" src="./p-additive.jpg" alt="" loading="lazy" />
+  <img class="about-deco d3 fade fx-r" src="./p-amr.jpg" alt="" loading="lazy" />
+  <img class="about-deco d4 fade fx-r" src="./p-agri.jpg" alt="" loading="lazy" />
+
+  <div class="inner">
+    <p class="eyebrow fade">01 — About</p>
+    <h2 class="grad display fade">About me</h2>
+    <p class="about-text" id="aboutText">I am a mechanical engineer who moved into embedded systems by building things people actually used. I founded Technolkar Innovations, making DIY electronics kits for students, and ran the whole loop myself — circuit design, firmware, soldering, packaging, documentation and the workshops. Now I am formalising that hands-on background with an M.Sc. in Mechatronics and Cyber-Physical Systems at Deggendorf Institute of Technology.</p>
+
+    <div class="about-stats fade">
+      <div><b>50+</b><span>DIY kits shipped</span></div>
+      <div><b>200+</b><span>Students trained</span></div>
+      <div><b>203</b><span>Tutorial videos</span></div>
+      <div><b>2.25K</b><span>Subscribers</span></div>
+      <div><b>3</b><span>National awards</span></div>
+    </div>
+
+    <div class="fade" style="margin-top:3rem"><a class="btn-contact" href="#contact">Contact Me</a></div>
+  </div>
+</section>
+
+<!-- ====================== PROJECTS ====================== -->
+<section class="sec wrap" id="projects">
+  <div class="inner">
+    <p class="eyebrow fade">02 — Selected work</p>
+    <h2 class="grad display fade" style="margin-bottom:3.5rem">Projects</h2>
+  </div>
+
+  <div class="proj-stack inner" id="stack">
+
+    <div class="card-wrap"><article class="card">
+      <div class="card-top">
+        <div class="card-id"><div class="card-num">01</div>
+          <div class="card-meta"><div class="card-cat">THD Germany · 2024–25</div>
+            <h3>Driver-Perspective Active Safety System</h3></div></div>
+        <a class="btn-ghost" href="https://github.com/technolkar/Driver-Perspective-Simulation-in-Unity" target="_blank" rel="noopener noreferrer">Repository</a>
+      </div>
+      <div class="card-body">
+        <div class="card-copy">
+          <p>A four-level VR driving trainer built in Unity — day, night, fog and rain conditions, autonomous emergency braking and ABS, crash detection with logged reaction times, and an inverse-kinematics driver whose hands track the wheel. Runs on a Meta Quest 3 with a HORI racing wheel and pedals. Seven-person team at THD; I led it.</p>
+          <p><strong>My part was the pedestrian and traffic system.</strong> Mixamo characters rigged with NavMesh agents, footpaths baked as the only walkable surface, an AI spawner cloning pedestrians across the city, and a wander script sending each to random footpath destinations — so the streets fill with people who distract the driver without ever stepping into the road.</p>
+          <div class="card-links"><a class="btn-ghost" href="./cvar-paper.pdf" target="_blank" rel="noopener noreferrer">Project paper</a></div>
+          <div class="card-tech">Unity 3D · C# · NavMesh · Mixamo · Meta Quest 3 · HORI wheel</div>
+        </div>
+        <div class="card-media"><video data-src="./vr-sim.mp4" poster="./p-vr.jpg" muted loop playsinline preload="none" aria-label="Driving through the simulated city with pedestrians on the footpath"></video></div>
+      </div>
+    </article></div>
+
+    <div class="card-wrap"><article class="card">
+      <div class="card-top">
+        <div class="card-id"><div class="card-num">02</div>
+          <div class="card-meta"><div class="card-cat">KLE College · 2022–23 · Bachelor&apos;s thesis</div>
+            <h3>Autonomous Mobile Robot with ASRS &amp; Cartesian Arm</h3></div></div>
+        <a class="btn-ghost" href="https://github.com/technolkar/Autonomous-Mobile-Robot-with-ASRS-Cartesian-Robot" target="_blank" rel="noopener noreferrer">Repository</a>
+      </div>
+      <div class="card-body">
+        <div class="card-copy">
+          <p>Industrial material-handling robot combining an automatic storage &amp; retrieval system, forklift and Cartesian robotic arm. IR, ultrasonic and LIDAR sensing drive navigation and obstacle avoidance through embedded control logic, on a battery-powered platform with an IoT interface for remote operation. Team of four — I led it.</p>
+          <p><strong>Currently rebuilding the navigation stack on ROS 2.</strong></p>
+          <div class="card-tech">Embedded C · Jetson Nano · LIDAR · Stepper control · IoT</div>
+        </div>
+        <div class="card-media"><img src="./p-amr.jpg" alt="The completed autonomous mobile robot with its ASRS column" loading="lazy" /></div>
+      </div>
+    </article></div>
+
+    <div class="card-wrap"><article class="card">
+      <div class="card-top">
+        <div class="card-id"><div class="card-num">03</div>
+          <div class="card-meta"><div class="card-cat">AICTE IDEA Lab · funded</div>
+            <h3>Smart Solar-Powered Agriculture Robot</h3></div></div>
+        <a class="btn-ghost" href="https://github.com/technolkar/Multipurpose-Agriculture-Robot-" target="_blank" rel="noopener noreferrer">Repository</a>
+      </div>
+      <div class="card-body">
+        <div class="card-copy">
+          <p>Solar-powered IoT field robot that reduces manual labour in seeding, cutting, spraying and irrigation. Soil-moisture and humidity sensors feed an ESP32 that drives automated control and a real-time IoT dashboard. I worked on concept development, circuit design and full hardware integration.</p>
+          <div class="card-tech">ESP32 · Embedded C · IoT · Solar power</div>
+        </div>
+        <div class="card-media"><img src="./p-agri.jpg" alt="The solar agriculture robot with its seed and water tanks" loading="lazy" /></div>
+      </div>
+    </article></div>
+
+    <div class="card-wrap"><article class="card">
+      <div class="card-top">
+        <div class="card-id"><div class="card-num">04</div>
+          <div class="card-meta"><div class="card-cat">KLE College · 2021–22 · 1st Prize, Pioneer National</div>
+            <h3>Virtual Doctor Robot</h3></div></div>
+        <a class="btn-ghost" href="https://github.com/technolkar/Virtual-Doctor-Robot-" target="_blank" rel="noopener noreferrer">Repository</a>
+      </div>
+      <div class="card-body">
+        <div class="card-copy">
+          <p>IoT telemedicine robot for contactless care during the pandemic: four-wheel mobile base, actuator-controlled drawers for medicine delivery, Arduino–NodeMCU control with mobile app connectivity, and a 360° tablet interface for live doctor–patient interaction.</p>
+          <div class="card-tech">Arduino · NodeMCU · Blynk IoT · Mechanical design</div>
+        </div>
+        <div class="card-media"><img src="./p-doctor.jpg" alt="The virtual doctor robot with illuminated medicine drawers" loading="lazy" /></div>
+      </div>
+    </article></div>
+
+    <div class="card-wrap"><article class="card">
+      <div class="card-top">
+        <div class="card-id"><div class="card-num">05</div>
+          <div class="card-meta"><div class="card-cat">Self-funded</div>
+            <h3>IoT Surveillance &amp; Manipulator Robot</h3></div></div>
+        <a class="btn-ghost" href="https://github.com/technolkar/Multifunction-Semi-Autonomous-Vehicle-" target="_blank" rel="noopener noreferrer">Repository</a>
+      </div>
+      <div class="card-body">
+        <div class="card-copy">
+          <p>Semi-autonomous robot combining surveillance, navigation and object manipulation. ESP32 control with ultrasonic and IR sensing for line-following and obstacle avoidance, live Wi-Fi camera streaming, and a 3-DOF servo arm for pick-and-place. Switchable between manual and autonomous modes.</p>
+          <div class="card-tech">ESP32 · Embedded C · Camera streaming · Robotic arm</div>
+        </div>
+        <div class="card-media"><img src="./p-surveil.jpg" alt="The surveillance robot with camera mast and gripper arm" loading="lazy" /></div>
+      </div>
+    </article></div>
+
+    <div class="card-wrap"><article class="card">
+      <div class="card-top">
+        <div class="card-id"><div class="card-num">06</div>
+          <div class="card-meta"><div class="card-cat">Polytechnic · 2019–20 · 2nd Prize, Aavishkar National</div>
+            <h3>IoT Voice-Controlled Humanoid Robot</h3></div></div>
+        <a class="btn-ghost" href="https://github.com/technolkar/Voice-Controlled-Humanoid-Robot-" target="_blank" rel="noopener noreferrer">Repository</a>
+      </div>
+      <div class="card-body">
+        <div class="card-copy">
+          <p>Full-size humanoid with IoT connectivity for remote control, voice commands and semi-autonomous navigation. Arduino UNO and NodeMCU (ESP8266) architecture with L298 motor drivers and a 16-channel servo controller driving two-axis arm actuation. Team of nine — I led the build.</p>
+          <div class="card-tech">Arduino UNO · ESP8266 · Servo control · Voice recognition</div>
+        </div>
+        <div class="card-media"><img src="./p-humanoid.jpg" alt="The voice-controlled humanoid robot at full human scale" loading="lazy" /></div>
+      </div>
+    </article></div>
+
+    <div class="card-wrap"><article class="card">
+      <div class="card-top">
+        <div class="card-id"><div class="card-num">07</div>
+          <div class="card-meta"><div class="card-cat">AICTE IDEA Lab · funded</div>
+            <h3>Hexacopter Agriculture Drone</h3></div></div>
+        <span class="btn-ghost" style="opacity:.45">Footage on request</span>
+      </div>
+      <div class="card-body">
+        <div class="card-copy">
+          <p>Pixhawk-based hexacopter for precision agriculture — autonomous field monitoring and spraying. Configured waypoint navigation, geo-fencing and return-to-home for stable autonomous flight. Responsible for hardware assembly and sensor calibration for reliable telemetry.</p>
+          <div class="card-tech">Pixhawk · UAV · Flight control · Telemetry</div>
+        </div>
+        <div class="card-media empty">Flight footage<br />coming soon</div>
+      </div>
+    </article></div>
+
+    <div class="card-wrap"><article class="card">
+      <div class="card-top">
+        <div class="card-id"><div class="card-num">08</div>
+          <div class="card-meta"><div class="card-cat">THD Germany · case studies</div>
+            <h3>AR/VR &amp; Additive Manufacturing</h3></div></div>
+        <span class="btn-ghost" style="opacity:.45">Details on request</span>
+      </div>
+      <div class="card-body">
+        <div class="card-copy">
+          <p>Two AR/VR case studies in Unity — a car simulation and playable game levels — alongside additive-manufacturing coursework. Also wrote Lua scripting to generate an elliptical gear with a sine tooth profile, driving the geometry parametrically rather than modelling it by hand.</p>
+          <div class="card-tech">Unity 3D · C# · Lua · Parametric design</div>
+        </div>
+        <div class="card-media"><img src="./p-additive.jpg" alt="A gold-finish 3D print made on the lab printers" loading="lazy" /></div>
+      </div>
+    </article></div>
+
+    <div class="card-wrap"><article class="card">
+      <div class="card-top">
+        <div class="card-id"><div class="card-num">09</div>
+          <div class="card-meta"><div class="card-cat">Technolkar · YouTube</div>
+            <h3>203 build tutorials, 2,250 subscribers</h3></div></div>
+        <a class="btn-ghost" href="https://www.youtube.com/@TechnolkarInnovations" target="_blank" rel="noopener noreferrer">Channel</a>
+      </div>
+      <div class="card-body">
+        <div class="card-copy">
+          <p>I film and publish every build: agriculture robots, IoT-controlled forklifts, mesh sensor networks that work without internet, and step-by-step kit assembly guides. Explaining hardware clearly to beginners turned out to be as valuable a skill as building it.</p>
+          <div class="card-tech">Technical teaching · Documentation · 203 videos</div>
+        </div>
+        <div class="card-media"><img src="./p-teaching.jpg" alt="A full auditorium during one of the robotics workshops" loading="lazy" /></div>
+      </div>
+    </article></div>
+
+  </div>
+</section>
+
+<!-- ====================== EXPERIENCE ====================== -->
+<section class="sec wrap" id="experience">
+  <div class="inner">
+    <p class="eyebrow fade">03 — Where I&apos;ve built things</p>
+    <h2 class="grad display fade" style="margin-bottom:3rem">Experience</h2>
+
+    <div class="row fade">
+      <div class="when">Jul 2023 — Sep 2024</div>
+      <div>
+        <h3>Founder &amp; Product Developer</h3>
+        <div class="org">Technolkar Innovations, Belagavi, India — paused since relocating to Germany</div>
+        <ul>
+          <li>Designed and tested IoT and microcontroller-driven DIY educational kits in Proteus and the Arduino IDE.</li>
+          <li>Owned the full electronics workflow: prototyping, testing, soldering, assembly, packaging and documentation.</li>
+          <li>Led a four-person team on circuit optimisation and embedded integration.</li>
+          <li>Ran workshops across schools and colleges, training <strong>200+ students</strong>.</li>
+          <li>Shipped <strong>50+ kits</strong> and built the Technolkar brand for affordable STEM hardware.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row fade">
+      <div class="when">Oct 2022 — Jun 2023</div>
+      <div>
+        <h3>Student Lab Head &amp; Technical Mentor</h3>
+        <div class="org">AICTE IDEA Lab, KLE Technological University, India</div>
+        <ul>
+          <li>Trained students on 3D printing, laser cutting and CNC equipment.</li>
+          <li>Collaborated across embedded, IoT and robotics teams on design, debugging and prototype testing.</li>
+          <li>Delivered rapid-prototyping workshops and managed lab resource accessibility.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row fade">
+      <div class="when">Aug — Sep 2022</div>
+      <div>
+        <h3>Intern — Industrial Automation</h3>
+        <div class="org">Bemco Hydraulics Pvt. Ltd., India</div>
+        <ul>
+          <li>Built and wired control panel boards for industrial hydraulic automation systems.</li>
+          <li>Learned how Siemens PLC-controlled hydraulic systems are assembled, wired and commissioned.</li>
+          <li>Worked to industrial wiring and documentation standards under engineer supervision.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== EDUCATION & AWARDS ====================== -->
+<section class="sec wrap" id="education">
+  <div class="inner">
+    <p class="eyebrow fade">04 — Background</p>
+    <h2 class="grad display fade" style="margin-bottom:3rem">Education</h2>
+
+    <div class="row fade">
+      <div class="when">Oct 2024 — Present</div>
+      <div><h3>M.Sc. Mechatronics and Cyber-Physical Systems</h3>
+        <div class="org">Deggendorf Institute of Technology, Germany</div></div>
+    </div>
+    <div class="row fade">
+      <div class="when">2020 — 2023</div>
+      <div><h3>B.E. Mechanical Engineering — 8.2 CGPA</h3>
+        <div class="org">Visvesvaraya Technological University, KLE College of Engineering &amp; Technology, Belagavi</div></div>
+    </div>
+    <div class="row fade">
+      <div class="when">2017 — 2020</div>
+      <div><h3>Diploma in Mechatronics — 95%</h3>
+        <div class="org">M. L. Bharatesh Polytechnic, Belagavi — Best Outgoing Student of the Year</div></div>
+    </div>
+    <div class="row fade">
+      <div class="when">Awards</div>
+      <div>
+        <img src="./p-gokart.jpg" alt="The Vegatam go-kart" loading="lazy"
+             style="border-radius:22px;max-width:22rem;margin-bottom:1.3rem" />
+        <ul>
+          <li><strong>All-India Rank 8</strong> — Go-Kart Racing Championship (AIRC), Ajeenkya DY Patil University, Pune, 2023</li>
+          <li><strong>1st Prize</strong> — Pioneer National-Level Technical Event, for the Virtual Doctor Robot</li>
+          <li><strong>2nd Prize</strong> — Aavishkar National-Level Technical Event, for the Voice-Controlled Humanoid Robot</li>
+          <li>Multiple first prizes at engineering and diploma project exhibitions; presented at <strong>100+ technical paper events</strong>, 2017–2023</li>
+          <li>MATLAB Reinforcement Learning Onramp — MathWorks, 2023</li>
+          <li>Certified Training, PCB Design &amp; Manufacturing — Embesys Training Foundation, 2018</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== SKILLS ====================== -->
+<section class="skills wrap" id="skills">
+  <div class="inner">
+    <p class="eyebrow fade">05 — What I work with</p>
+    <h2 class="fade">Skills</h2>
+    <div class="sk">
+      <div class="sk-item fade"><div class="sk-num">01</div><div class="sk-body">
+        <h3>Embedded &amp; Hardware</h3>
+        <p>ESP32 / ESP8266, Arduino, Raspberry Pi, Jetson Nano, Pixhawk, PCB design, soldering, sensor calibration, battery and power management, control panel wiring.</p></div></div>
+      <div class="sk-item fade"><div class="sk-num">02</div><div class="sk-body">
+        <h3>Programming</h3>
+        <p>Embedded C, C++, Python, C# for Unity, Lua, Git, Ubuntu and Linux.</p></div></div>
+      <div class="sk-item fade"><div class="sk-num">03</div><div class="sk-body">
+        <h3>Design &amp; Simulation</h3>
+        <p>SolidWorks, AutoCAD, KiCad, Proteus, MATLAB, LabVIEW, Unity 3D.</p></div></div>
+      <div class="sk-item fade"><div class="sk-num">04</div><div class="sk-body">
+        <h3>Fabrication</h3>
+        <p>3D printing, laser cutting, CNC, UltiMaker Cura, RDWorks.</p></div></div>
+      <div class="sk-item fade"><div class="sk-num">05</div><div class="sk-body">
+        <h3>Currently Learning</h3>
+        <p>ROS 2, Nav2, Gazebo and SLAM — rebuilding my AMR's navigation stack properly. German, A1 working toward B1.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== CONTACT ====================== -->
+<section class="sec contact wrap" id="contact">
+  <div class="inner">
+    <p class="eyebrow fade">06 — Say hello</p>
+    <h2 class="grad display fade">Contact</h2>
+    <div class="fade"><a class="mail" href="mailto:ajayarjunmannolkar@gmail.com">ajayarjunmannolkar@gmail.com</a></div>
+    <div class="elsewhere fade">
+      <a href="https://github.com/technolkar" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/in/ajaymannolkar" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://www.youtube.com/@TechnolkarInnovations" target="_blank" rel="noopener noreferrer">YouTube</a>
+    </div>
+    <div class="fade" style="margin-top:2.5rem"><a class="btn-contact" href="mailto:ajayarjunmannolkar@gmail.com">Contact Me</a></div>
+    <footer class="end">
+      <span>Ajay Arjun Mannolkar — Munich, Germany</span>
+      <span>If it involves real hardware, I would like to hear about it.</span>
+    </footer>
+  </div>
+</section>
+
+<script>
+document.documentElement.classList.add('js');
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- marquee rows ---------- */
+  var shots = ['./p-amr.jpg','./p-agri.jpg','./p-vr.jpg','./p-doctor.jpg','./p-humanoid.jpg',
+               './p-surveil.jpg','./p-teaching.jpg','./p-additive.jpg','./p-gokart.jpg','./hero.jpg'];
+  function fill(el, list){
+    var html = '';
+    for (var pass=0; pass<3; pass++){
+      for (var i=0;i<list.length;i++){
+        html += '<img src="'+list[i]+'" alt="" loading="lazy" decoding="async" />';
+      }
+    }
+    el.innerHTML = html;
+  }
+  var r1 = document.getElementById('row1'), r2 = document.getElementById('row2');
+  fill(r1, shots.slice(0,5)); fill(r2, shots.slice(5));
+
+  var sec = document.querySelector('.marquee-sec');
+  function marquee(){
+    if (!sec) return;
+    var top = sec.getBoundingClientRect().top + window.scrollY;
+    var off = (window.scrollY - top + window.innerHeight) * 0.3;
+    r1.style.transform = 'translateX(' + (off - 200) + 'px)';
+    r2.style.transform = 'translateX(' + (-(off - 200)) + 'px)';
+  }
+
+  /* ---------- sticky project stack ---------- */
+  var wraps = [].slice.call(document.querySelectorAll('.card-wrap'));
+  var total = wraps.length;
+  wraps.forEach(function(w,i){
+    w.querySelector('.card').style.top = 'calc(6.5rem + ' + (i*16) + 'px)';
+  });
+  function stack(){
+    if (window.innerWidth < 768) return;
+    wraps.forEach(function(w,i){
+      var r = w.getBoundingClientRect();
+      var p = Math.min(1, Math.max(0, -r.top / Math.max(1, r.height)));
+      var card = w.querySelector('.card');
+      var target = 1 - (total - 1 - i) * 0.012;
+      var s = 1 - p * (1 - target) - p * 0.035;
+      card.style.transform = 'scale(' + s.toFixed(4) + ')';
+      card.style.opacity = (1 - p * 0.35).toFixed(3);
+    });
+  }
+
+  var ticking = false;
+  function onScroll(){
+    if (ticking) return; ticking = true;
+    window.requestAnimationFrame(function(){ marquee(); stack(); charReveal(); ticking = false; });
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  window.addEventListener('resize', onScroll, { passive:true });
+
+  /* ---------- magnetic portrait ---------- */
+  var magnet = document.getElementById('magnet'), host = document.getElementById('portrait');
+  if (magnet && host && !reduce && window.matchMedia('(pointer:fine)').matches){
+    var PAD = 150, STRENGTH = 3;
+    window.addEventListener('mousemove', function(e){
+      var r = host.getBoundingClientRect();
+      var cx = r.left + r.width/2, cy = r.top + r.height/2;
+      var inside = e.clientX > r.left-PAD && e.clientX < r.right+PAD &&
+                   e.clientY > r.top-PAD  && e.clientY < r.bottom+PAD;
+      if (inside){
+        magnet.style.transition = 'transform 0.3s ease-out';
+        magnet.style.transform = 'translate3d(' + ((e.clientX-cx)/STRENGTH) + 'px,' +
+                                                  ((e.clientY-cy)/STRENGTH) + 'px,0)';
+      } else {
+        magnet.style.transition = 'transform 0.6s ease-in-out';
+        magnet.style.transform = 'translate3d(0,0,0)';
+      }
+    }, { passive:true });
+  }
+
+  /* ---------- character reveal on the About paragraph ---------- */
+  var at = document.getElementById('aboutText'), chars = [];
+  if (at && !reduce){
+    var text = at.textContent;
+    at.textContent = '';
+    for (var i=0;i<text.length;i++){
+      var s = document.createElement('span');
+      s.className = 'ch'; s.textContent = text[i];
+      at.appendChild(s); chars.push(s);
+    }
+  }
+  function charReveal(){
+    if (!chars.length) return;
+    var r = at.getBoundingClientRect(), vh = window.innerHeight;
+    var p = (vh*0.8 - r.top) / (r.height + vh*0.6);
+    p = Math.min(1, Math.max(0, p));
+    var upto = Math.floor(p * chars.length * 1.15);
+    for (var i=0;i<chars.length;i++) chars[i].style.opacity = i < upto ? '1' : '0.2';
+  }
+
+  /* ---------- reveal on view ---------- */
+  var fades = document.querySelectorAll('.fade');
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin:'0px 0px -8% 0px', threshold:0.05 });
+    fades.forEach(function(el,i){ el.style.transitionDelay = Math.min(i,6)*60 + 'ms'; io.observe(el); });
+    setTimeout(function(){
+      fades.forEach(function(el){ if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('in'); });
+    }, 1300);
+  } else {
+    fades.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---------- play the clip only while on screen ---------- */
+  var vids = document.querySelectorAll('video[data-src]');
+  if (vids.length && !reduce && 'IntersectionObserver' in window){
+    var vo = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        var v = e.target;
+        if (e.isIntersecting){ if (!v.src) v.src = v.dataset.src;
+          var pr = v.play(); if (pr && pr.catch) pr.catch(function(){}); }
+        else if (!v.paused){ v.pause(); }
+      });
+    }, { threshold:0.25 });
+    vids.forEach(function(v){ vo.observe(v); });
+  }
+
+  marquee(); stack(); charReveal();
+})();
+</script>
+</body>
+</html>
