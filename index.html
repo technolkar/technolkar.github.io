@@ -3,683 +3,809 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>Ajay Mannolkar — Robotics Engineer</title>
+<title>Ajay Mannolkar — Robotics &amp; Embedded Systems</title>
 <meta name="description" content="Ajay Arjun Mannolkar — robotics and embedded systems engineer. M.Sc. Mechatronics and Cyber-Physical Systems, Deggendorf Institute of Technology. Munich, Germany." />
-<meta property="og:title" content="Ajay Mannolkar — Robotics Engineer" />
-<meta property="og:description" content="Autonomous mobile robots, embedded firmware, IoT. 50+ kits shipped, 200+ students trained, 203 build tutorials. M.Sc. Cyber-Physical Systems, THD." />
+<meta property="og:title" content="Ajay Mannolkar — Robotics &amp; Embedded Systems" />
+<meta property="og:description" content="Autonomous mobile robots, field robotics, embedded firmware. 50+ kits shipped, 200+ students trained, 203 build tutorials. Munich, Germany." />
 <meta property="og:image" content="https://technolkar.github.io/p-amr.jpg" />
 <meta property="og:type" content="website" />
-<meta name="theme-color" content="#0A0B0D" />
-<meta name="color-scheme" content="dark" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="theme-color" content="#F6F1EB" />
 <meta name="apple-mobile-web-app-title" content="Ajay Mannolkar" />
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%230A0B0D'/><rect x='18' y='18' width='64' height='64' fill='none' stroke='%23FFB020' stroke-width='7'/></svg>" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23F6F1EB'/><text y='72' x='50' text-anchor='middle' font-size='62' font-weight='700' font-family='Poppins,sans-serif' fill='%23E2714A'>A</text></svg>" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
   :root{
-    --bg:#0A0B0D;
-    --panel:#101317;
-    --panel-2:#14181D;
-    --ink:#E6EDF3;
-    --dim:rgba(230,237,243,.60);
-    --faint:rgba(230,237,243,.34);
-    --line:rgba(230,237,243,.13);
-    --accent:#FFB020;
-    --accent-soft:rgba(255,176,32,.13);
-    --ok:#4ADE80;
-    --sans:'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
-    --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --cream:#F6F1EB;
+    --cream-2:#FBF8F4;
+    --white:#FFFFFF;
+    --ink:#2B3440;
+    --ink-2:#6B7785;
+    --ink-3:#9AA4B0;
+    --coral:#E2714A;
+    --coral-soft:#FBEDE6;
+    --amber:#F0A020;
+    --line:rgba(43,52,64,.10);
+    --shadow:0 18px 44px -24px rgba(43,52,64,.34);
+    --shadow-lg:0 30px 70px -32px rgba(43,52,64,.42);
     --pad:1.25rem;
-    color-scheme:dark;
+    color-scheme:light;
   }
-  @media (min-width:640px){ :root{ --pad:2rem; } }
-  @media (min-width:1024px){ :root{ --pad:3rem; } }
+  @media (min-width:768px){ :root{ --pad:2.5rem; } }
+  @media (min-width:1280px){ :root{ --pad:4rem; } }
 
   *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
-  html{ scroll-behavior:smooth; background:var(--bg); overflow-x:clip; }
-  body{ background:var(--bg); color:var(--ink); font-family:var(--sans); font-weight:400;
-    -webkit-font-smoothing:antialiased; -webkit-text-size-adjust:100%; overflow-x:clip;
-    line-height:1.55; }
+  html{ scroll-behavior:smooth; scroll-padding-top:5.5rem; background:var(--cream);
+        overflow-x:clip; }
+  body{ font-family:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;
+    color:var(--ink); background:var(--cream); line-height:1.7; font-weight:400;
+    -webkit-font-smoothing:antialiased; -webkit-text-size-adjust:100%; overflow-x:clip; }
   a{ color:inherit; text-decoration:none; }
   img,video{ display:block; max-width:100%; }
-  ::selection{ background:var(--accent); color:#0A0B0D; }
+  ::selection{ background:var(--coral); color:#fff; }
 
   .wrap{ padding-left:max(var(--pad),env(safe-area-inset-left,0px));
          padding-right:max(var(--pad),env(safe-area-inset-right,0px)); }
-  .inner{ max-width:88rem; margin:0 auto; }
+  .inner{ max-width:76rem; margin:0 auto; }
 
-  .mono{ font-family:var(--mono); font-size:.68rem; letter-spacing:.16em;
-         text-transform:uppercase; color:var(--faint); }
-  .rule{ height:1px; background:var(--line); }
+  /* ================= NAV ================= */
+  .nav{ position:fixed; inset:0 0 auto 0; z-index:90; background:rgba(246,241,235,.92);
+    backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid transparent; transition:border-color .3s, box-shadow .3s;
+    padding-top:max(.85rem,env(safe-area-inset-top,0px)); padding-bottom:.85rem; }
+  .nav.stuck{ border-bottom-color:var(--line); box-shadow:0 6px 22px -18px rgba(43,52,64,.5); }
+  .nav-in{ display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+  .logo{ font-weight:700; font-size:1.12rem; letter-spacing:-.01em; white-space:nowrap; }
+  .nav-links{ display:flex; gap:1.4rem; overflow-x:auto; scrollbar-width:none; }
+  .nav-links::-webkit-scrollbar{ display:none; }
+  .nav-links a{ position:relative; color:var(--ink-2); font-size:.92rem; font-weight:500;
+    white-space:nowrap; padding-bottom:.2rem; transition:color .25s; }
+  .nav-links a::after{ content:""; position:absolute; left:0; right:0; bottom:-2px; height:2px;
+    background:var(--coral); transform:scaleX(0); transform-origin:center;
+    transition:transform .3s ease; }
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-links a.on{ color:var(--coral); }
+  .nav-links a.on::after{ transform:scaleX(1); }
+  @media (max-width:860px){ .nav-links{ gap:1rem; } .nav-links a{ font-size:.82rem; } }
+  @media (max-width:560px){ .logo{ font-size:.98rem; } }
 
-  /* blueprint grid */
-  .grid-bg{ position:absolute; inset:0; pointer-events:none; opacity:.5;
-    background-image:linear-gradient(var(--line) 1px,transparent 1px),
-                     linear-gradient(90deg,var(--line) 1px,transparent 1px);
-    background-size:72px 72px;
-    -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,#000 30%,transparent 100%);
-    mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,#000 30%,transparent 100%); }
+  /* ================= HERO ================= */
+  .hero{ position:relative; padding-top:8rem; padding-bottom:4rem; overflow:hidden; }
+  @media (min-width:1024px){ .hero{ padding-top:10rem; padding-bottom:6rem; } }
+  .hero-grid{ display:grid; grid-template-columns:1fr; gap:2.5rem; align-items:center; }
+  @media (min-width:1024px){ .hero-grid{ grid-template-columns:1fr .92fr 1fr; gap:2rem; } }
 
-  /* ---------- top bar ---------- */
-  header.top{ position:fixed; inset:0 0 auto 0; z-index:80;
-    padding-top:max(.9rem,env(safe-area-inset-top,0px)); padding-bottom:.9rem;
-    display:flex; align-items:center; justify-content:space-between; gap:1rem;
-    transition:background .35s, border-color .35s, backdrop-filter .35s;
-    border-bottom:1px solid transparent; }
-  header.top.stuck{ background:rgba(10,11,13,.86); backdrop-filter:blur(14px);
-    -webkit-backdrop-filter:blur(14px); border-bottom-color:var(--line); }
-  .brand{ font-family:var(--mono); font-size:.76rem; letter-spacing:.2em;
-    text-transform:uppercase; color:var(--ink); display:flex; align-items:center; gap:.55rem; }
-  .brand i{ width:9px; height:9px; background:var(--accent); display:block; }
-  nav.links{ display:flex; gap:1.1rem; }
-  nav.links a{ font-family:var(--mono); font-size:.68rem; letter-spacing:.14em;
-    text-transform:uppercase; color:var(--dim); transition:color .2s; }
-  nav.links a:hover{ color:var(--accent); }
-  @media (max-width:560px){ nav.links a:nth-child(n+4){ display:none; } }
-  @media (min-width:768px){ nav.links{ gap:2rem; } nav.links a{ font-size:.72rem; } }
+  .hello{ color:var(--ink-2); font-size:1.15rem; font-weight:400; }
+  .hero h1{ font-size:clamp(2.6rem,6.4vw,4.3rem); font-weight:700; line-height:1.08;
+    letter-spacing:-.025em; margin:.1rem 0 .5rem; }
+  .hero h1 span{ color:var(--coral); }
+  .hero .role{ font-size:clamp(1.05rem,2vw,1.35rem); color:var(--ink-2); font-weight:400;
+    line-height:1.4; }
+  .hero .blurb{ color:var(--ink-2); font-size:.95rem; font-weight:300; margin-top:1.1rem;
+    max-width:34ch; }
+  .btn{ display:inline-flex; align-items:center; gap:.55rem; background:var(--coral);
+    color:#fff; font-weight:600; font-size:.92rem; padding:.8rem 1.6rem; border-radius:10px;
+    margin-top:1.6rem; box-shadow:0 14px 30px -14px rgba(226,113,74,.85);
+    transition:transform .25s, box-shadow .25s, background .25s; }
+  .btn:hover{ transform:translateY(-2px); background:#D4603A;
+    box-shadow:0 18px 36px -14px rgba(226,113,74,.95); }
+  .btn.ghost{ background:transparent; color:var(--ink); border:1.5px solid var(--line);
+    box-shadow:none; }
+  .btn.ghost:hover{ background:rgba(43,52,64,.05); transform:translateY(-2px); }
 
-  /* ---------- hero ---------- */
-  .hero{ position:relative; min-height:100svh; display:flex; flex-direction:column;
-    justify-content:flex-end; padding-top:6rem; padding-bottom:1.5rem; overflow:hidden; }
-  .status{ display:inline-flex; align-items:center; gap:.55rem; font-family:var(--mono); margin-top:0;
-    font-size:.66rem; letter-spacing:.16em; text-transform:uppercase; color:var(--ok);
-    border:1px solid rgba(74,222,128,.3); background:rgba(74,222,128,.07);
-    padding:.35rem .75rem; border-radius:2px; margin-bottom:1.1rem; }
-  .status b{ width:6px; height:6px; border-radius:50%; background:var(--ok);
-    animation:pulse 2.4s infinite; }
-  @keyframes pulse{ 0%,100%{opacity:1} 50%{opacity:.25} }
+  .hero-photo{ position:relative; justify-self:center; width:min(78vw,22rem); }
+  .hero-photo img{ width:100%; aspect-ratio:1; object-fit:cover; object-position:center 18%;
+    border-radius:50%; box-shadow:var(--shadow-lg); border:8px solid rgba(255,255,255,.85); }
+  .ring{ position:absolute; border-radius:50%; border:2px solid currentColor;
+    animation:bob 7s ease-in-out infinite; }
+  .r1{ width:6.5rem; aspect-ratio:1; color:#3FB7B0; top:-1.5rem; left:-1rem; }
+  .r2{ width:4.2rem; aspect-ratio:1; color:var(--coral); bottom:1rem; right:-1rem;
+    animation-delay:-2.5s; }
+  .dot{ position:absolute; width:.6rem; aspect-ratio:1; border-radius:50%;
+    animation:bob 6s ease-in-out infinite; }
+  .d1{ background:#5B8DEF; top:1rem; right:2rem; animation-delay:-1s; }
+  .d2{ background:var(--coral); bottom:3rem; left:-.4rem; animation-delay:-3.5s; }
+  @keyframes bob{ 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(-14px) } }
 
-  .hero h1{ font-weight:600; letter-spacing:-.045em; line-height:.88;
-    font-size:clamp(2.7rem,10.4vw,9rem); text-transform:uppercase;
-    background:linear-gradient(176deg,#5C6670 0%,#DCE6EF 72%);
-    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
-  .hero h1 em{ font-style:normal; display:block; }
-  .hero-sub{ margin-top:1.2rem; display:grid; grid-template-columns:1fr; gap:1.5rem;
-    align-items:end; }
-  @media (min-width:900px){ .hero-sub{ grid-template-columns:1.1fr auto; gap:3rem; } }
-  .hero-sub p{ color:var(--dim); font-weight:300; max-width:46ch;
-    font-size:clamp(.95rem,1.5vw,1.2rem); }
-  .hero-sub p b{ color:var(--ink); font-weight:500; }
+  .hero-keys .where{ color:var(--coral); font-weight:600; font-size:.78rem;
+    letter-spacing:.14em; text-transform:uppercase; margin-bottom:.6rem; }
+  .hero-keys h2{ font-size:clamp(1.25rem,2.4vw,1.7rem); font-weight:700; line-height:1.3;
+    letter-spacing:-.015em; }
+  .hero-keys p{ color:var(--ink-2); font-weight:300; font-size:.95rem; margin-top:1rem; }
 
-  /* framed hero photo */
-  .frame{ position:relative; width:min(100%,16rem); justify-self:end; }
-  .frame img{ width:100%; aspect-ratio:4/5; object-fit:cover; object-position:center 20%;
-    filter:grayscale(.3) contrast(1.05); }
-  .frame::before,.frame::after{ content:""; position:absolute; width:14px; height:14px;
-    border:2px solid var(--accent); }
-  .frame::before{ top:-6px; left:-6px; border-right:0; border-bottom:0; }
-  .frame::after{ bottom:-6px; right:-6px; border-left:0; border-top:0; }
-  .frame figcaption{ font-family:var(--mono); font-size:.6rem; letter-spacing:.14em;
-    text-transform:uppercase; color:var(--faint); margin-top:.6rem; }
-  @media (max-width:899px){ .frame{ width:12rem; justify-self:start; } }
-
-  /* telemetry strip */
-  .telemetry{ margin-top:1.75rem; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
-    display:grid; grid-template-columns:repeat(2,1fr); }
-  @media (min-width:760px){ .telemetry{ grid-template-columns:repeat(5,1fr); } }
-  .telemetry div{ padding:.9rem 1rem .9rem 0; border-right:1px solid var(--line); }
-  .telemetry div:last-child{ border-right:0; }
-  @media (max-width:759px){ .telemetry div:nth-child(2n){ border-right:0; padding-left:1rem; }
-    .telemetry div:nth-child(n+3){ border-top:1px solid var(--line); } }
-  .telemetry b{ display:block; font-family:var(--mono); font-weight:600;
-    font-size:clamp(1.3rem,3vw,2rem); color:var(--accent); line-height:1.1; }
-  .telemetry span{ display:block; font-family:var(--mono); font-size:.6rem;
-    letter-spacing:.14em; text-transform:uppercase; color:var(--faint); margin-top:.3rem; }
-
-  /* ---------- section shell ---------- */
-  section.band{ padding-top:5rem; padding-bottom:5rem; position:relative; }
-  @media (min-width:768px){ section.band{ padding-top:8rem; padding-bottom:8rem; } }
-  .sec-head{ display:flex; align-items:baseline; gap:1rem; margin-bottom:2.5rem; flex-wrap:wrap; }
-  .sec-head h2{ font-weight:600; letter-spacing:-.035em; text-transform:uppercase;
-    font-size:clamp(1.9rem,5.5vw,4rem); line-height:1; }
-  .sec-head .count{ font-family:var(--mono); color:var(--accent); font-size:.72rem;
-    letter-spacing:.14em; }
-  .sec-head::after{ content:""; flex:1 1 120px; height:1px; background:var(--line); }
-
-  /* ---------- PROJECT DATASHEETS ---------- */
-  .ds{ border:1px solid var(--line); background:var(--panel); margin-bottom:1.25rem;
-    transition:border-color .35s, background .35s; }
-  .ds:hover{ border-color:rgba(255,176,32,.42); background:var(--panel-2); }
-  .ds-head{ display:flex; align-items:flex-start; gap:1rem; padding:1.1rem 1.25rem;
-    border-bottom:1px solid var(--line); flex-wrap:wrap; }
-  .ds-idx{ font-family:var(--mono); font-weight:600; color:var(--accent);
-    font-size:1.05rem; line-height:1.3; }
-  .ds-title{ flex:1 1 16rem; min-width:0; }
-  .ds-title h3{ font-weight:600; letter-spacing:-.015em; line-height:1.15;
-    font-size:clamp(1.05rem,2.3vw,1.6rem); }
-  .ds-title .where{ font-family:var(--mono); font-size:.64rem; letter-spacing:.14em;
-    text-transform:uppercase; color:var(--faint); margin-top:.35rem; }
-  .tag{ font-family:var(--mono); font-size:.6rem; letter-spacing:.14em; text-transform:uppercase;
-    color:var(--accent); border:1px solid rgba(255,176,32,.38); background:var(--accent-soft);
-    padding:.28rem .6rem; white-space:nowrap; align-self:center; }
-
-  .ds-body{ display:grid; grid-template-columns:1fr; }
-  @media (min-width:900px){ .ds-body{ grid-template-columns:1.05fr 1fr; } }
-  .ds-media{ background:#0D1013; border-bottom:1px solid var(--line); }
-  @media (min-width:900px){ .ds-media{ border-bottom:0; border-right:1px solid var(--line); } }
-  .ds-media img,.ds-media video{ width:100%; height:100%; object-fit:cover;
-    aspect-ratio:16/10; filter:grayscale(.12); }
-  .ds-media.none{ display:flex; align-items:center; justify-content:center; aspect-ratio:16/10;
-    font-family:var(--mono); font-size:.64rem; letter-spacing:.18em; text-transform:uppercase;
-    color:var(--faint); text-align:center; padding:2rem;
-    background-image:repeating-linear-gradient(135deg,transparent 0 10px,rgba(230,237,243,.045) 10px 20px); }
-  .ds-info{ padding:1.25rem; display:flex; flex-direction:column; }
-  .spec{ display:grid; grid-template-columns:auto 1fr; gap:.45rem 1.1rem; margin-bottom:1.1rem; }
-  .spec dt{ font-family:var(--mono); font-size:.6rem; letter-spacing:.14em;
-    text-transform:uppercase; color:var(--faint); padding-top:.18rem; }
-  .spec dd{ font-size:.88rem; color:var(--ink); font-weight:400; }
-  .ds-info p{ color:var(--dim); font-weight:300; font-size:.92rem; margin-bottom:.8rem; }
-  .ds-info p strong{ color:var(--ink); font-weight:500; }
-  .ds-links{ display:flex; flex-wrap:wrap; gap:.5rem; margin-top:auto; padding-top:.9rem; }
-  .lnk{ font-family:var(--mono); font-size:.64rem; letter-spacing:.14em; text-transform:uppercase;
-    border:1px solid var(--line); padding:.5rem .9rem; color:var(--ink);
-    transition:border-color .25s, color .25s, background .25s; }
-  .lnk:hover{ border-color:var(--accent); color:var(--accent); background:var(--accent-soft); }
-  .lnk.off{ opacity:.4; }
-
-  /* ---------- generic rows ---------- */
-  .row{ display:grid; grid-template-columns:1fr; gap:.5rem; padding:1.8rem 0;
-    border-top:1px solid var(--line); }
-  @media (min-width:900px){ .row{ grid-template-columns:12rem 1fr; gap:2.5rem; align-items:start; } }
-  .row .when{ font-family:var(--mono); font-size:.64rem; letter-spacing:.14em;
-    text-transform:uppercase; color:var(--faint); padding-top:.35rem; }
-  .row h3{ font-weight:500; font-size:1.08rem; }
-  .row .org{ color:var(--dim); font-size:.88rem; font-weight:300; margin-bottom:.7rem; }
-  .row ul{ list-style:none; }
-  .row li{ color:var(--dim); font-weight:300; font-size:.9rem; padding-left:1rem;
-    position:relative; margin-bottom:.3rem; }
-  .row li::before{ content:""; position:absolute; left:0; top:.62em; width:5px; height:1px;
-    background:var(--accent); }
-  .row li strong{ color:var(--ink); font-weight:500; }
-
-  /* ---------- about ---------- */
-  .about-grid{ display:grid; grid-template-columns:1fr; gap:2.5rem; }
-  @media (min-width:900px){ .about-grid{ grid-template-columns:1.5fr 1fr; gap:4rem; } }
-  .about-grid p{ color:var(--dim); font-weight:300; margin-bottom:1rem; max-width:62ch;
+  /* ================= SECTIONS ================= */
+  .sec{ padding-top:4.5rem; padding-bottom:4.5rem; }
+  @media (min-width:768px){ .sec{ padding-top:6.5rem; padding-bottom:6.5rem; } }
+  .sec.alt{ background:var(--cream-2); }
+  .sec.plain{ background:var(--white); }
+  .head{ text-align:center; margin-bottom:3rem; }
+  .head h2{ font-size:clamp(2rem,5.4vw,3.2rem); font-weight:700; letter-spacing:-.025em;
+    line-height:1.1; }
+  .head .bar{ width:3.6rem; height:3px; border-radius:3px; background:var(--coral);
+    margin:1rem auto 1.1rem; }
+  .head p{ color:var(--ink-2); font-weight:300; max-width:46ch; margin:0 auto;
     font-size:1rem; }
-  .about-grid p strong{ color:var(--ink); font-weight:500; }
-  .facts{ border:1px solid var(--line); background:var(--panel); padding:1.25rem; }
-  .facts dl{ display:grid; grid-template-columns:auto 1fr; gap:.65rem 1.1rem; }
-  .facts dt{ font-family:var(--mono); font-size:.6rem; letter-spacing:.14em;
-    text-transform:uppercase; color:var(--faint); padding-top:.18rem; }
-  .facts dd{ font-size:.88rem; }
 
-  /* ---------- skills ---------- */
-  .sk{ display:grid; grid-template-columns:1fr; gap:1px; background:var(--line);
-    border:1px solid var(--line); }
-  @media (min-width:760px){ .sk{ grid-template-columns:repeat(2,1fr); } }
-  .sk > div{ background:var(--panel); padding:1.5rem 1.25rem; }
-  .sk h3{ font-family:var(--mono); font-size:.64rem; letter-spacing:.16em;
-    text-transform:uppercase; color:var(--accent); margin-bottom:.7rem; font-weight:500; }
-  .sk p{ color:var(--dim); font-weight:300; font-size:.92rem; }
+  /* ---- about ---- */
+  .about{ display:grid; grid-template-columns:1fr; gap:2.5rem; }
+  @media (min-width:960px){ .about{ grid-template-columns:1.35fr 1fr; gap:3.5rem; } }
+  .about p{ color:var(--ink-2); font-weight:300; margin-bottom:1.1rem; }
+  .about p strong{ color:var(--ink); font-weight:600; }
+  .side-title{ font-weight:600; font-size:1.05rem; margin-bottom:1rem; }
+  .lang{ display:flex; align-items:center; justify-content:space-between; gap:1rem;
+    background:var(--white); border:1px solid var(--line); border-radius:12px;
+    padding:.75rem 1rem; margin-bottom:.6rem; box-shadow:var(--shadow); }
+  .lang b{ font-weight:500; font-size:.95rem; }
+  .lang span{ font-size:.74rem; font-weight:600; color:var(--coral);
+    background:var(--coral-soft); border-radius:999px; padding:.2rem .6rem; white-space:nowrap; }
+  .stats{ display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:1.75rem; }
+  @media (min-width:600px){ .stats{ grid-template-columns:repeat(4,1fr); } }
+  .stats div{ background:var(--white); border:1px solid var(--line); border-radius:12px;
+    padding:1rem; text-align:center; box-shadow:var(--shadow); }
+  .stats b{ display:block; font-size:1.6rem; font-weight:700; color:var(--coral); line-height:1.1; }
+  .stats span{ display:block; font-size:.68rem; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--ink-3); margin-top:.3rem; font-weight:500; }
 
-  /* ---------- contact ---------- */
-  .contact-box{ border:1px solid var(--line); background:var(--panel); padding:2rem 1.5rem; }
-  @media (min-width:768px){ .contact-box{ padding:3.5rem; } }
-  .contact-box h2{ font-weight:600; letter-spacing:-.035em; text-transform:uppercase;
-    font-size:clamp(1.8rem,5vw,3.4rem); line-height:1; margin-bottom:1.5rem; }
-  .mail{ display:inline-block; font-family:var(--mono); font-size:clamp(.85rem,2.2vw,1.35rem);
-    color:var(--accent); border-bottom:1px solid rgba(255,176,32,.35); padding-bottom:.2rem;
-    word-break:break-all; transition:border-color .25s; }
-  .mail:hover{ border-bottom-color:var(--accent); }
-  .elsewhere{ display:flex; flex-wrap:wrap; gap:.5rem; margin-top:2rem; }
-  footer.end{ border-top:1px solid var(--line); margin-top:3rem; padding:1.5rem 0 2.5rem;
-    display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+  /* ---- cards grid ---- */
+  .cards{ display:grid; grid-template-columns:1fr; gap:1.5rem; }
+  @media (min-width:860px){ .cards{ grid-template-columns:repeat(2,1fr); } }
+  .card{ background:var(--white); border:1px solid var(--line); border-radius:18px;
+    box-shadow:var(--shadow); overflow:hidden; display:flex; flex-direction:column;
+    transition:transform .35s ease, box-shadow .35s ease; }
+  .card:hover{ transform:translateY(-6px); box-shadow:var(--shadow-lg); }
+  .card-img{ aspect-ratio:16/9; background:#EEE9E3; overflow:hidden; }
+  .card-img img,.card-img video{ width:100%; height:100%; object-fit:cover;
+    transition:transform .6s ease; }
+  .card:hover .card-img img{ transform:scale(1.04); }
+  .card-img.none{ display:flex; align-items:center; justify-content:center; text-align:center;
+    font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3);
+    padding:1.5rem; }
+  .card-body{ padding:1.4rem; display:flex; flex-direction:column; flex:1; }
+  .cats{ display:flex; flex-wrap:wrap; gap:.4rem; margin-bottom:.7rem; }
+  .cat{ font-size:.66rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--coral); background:var(--coral-soft); border-radius:999px; padding:.22rem .6rem; }
+  .card h3{ font-size:1.14rem; font-weight:600; line-height:1.3; letter-spacing:-.01em; }
+  .card .desc{ color:var(--ink-2); font-weight:300; font-size:.92rem; margin-top:.5rem; }
+  .card .klabel{ font-weight:600; font-size:.92rem; margin-top:1rem; }
+  .card ul{ list-style:none; margin-top:.4rem; }
+  .card li{ color:var(--ink-2); font-weight:300; font-size:.88rem; padding-left:1.1rem;
+    position:relative; margin-bottom:.35rem; }
+  .card li::before{ content:""; position:absolute; left:.1rem; top:.72em; width:5px; height:5px;
+    border-radius:50%; background:var(--coral); }
+  .tags{ display:flex; flex-wrap:wrap; gap:.4rem; margin-top:1rem; }
+  .tag{ font-size:.72rem; font-weight:500; color:var(--ink-2); background:#F2F4F6;
+    border-radius:7px; padding:.3rem .6rem; }
+  .acts{ display:flex; gap:.6rem; margin-top:1.2rem; flex-wrap:wrap; }
+  .act{ flex:1 1 7rem; text-align:center; font-weight:600; font-size:.85rem;
+    padding:.68rem 1rem; border-radius:10px; background:var(--amber); color:#fff;
+    transition:filter .25s, transform .25s; }
+  .act:hover{ filter:brightness(1.07); transform:translateY(-1px); }
+  .act.out{ background:transparent; color:var(--ink); border:1.5px solid var(--line); }
+  .act.out:hover{ background:#F7F8F9; }
+  .note{ font-style:italic; color:var(--ink-3); font-size:.82rem; margin-top:.7rem; }
 
-  /* ---------- reveal ---------- */
-  .js .rv{ opacity:0; transform:translateY(22px);
-    transition:opacity .65s cubic-bezier(.22,1,.36,1), transform .65s cubic-bezier(.22,1,.36,1); }
+  /* ---- timeline rows ---- */
+  .tl{ display:grid; grid-template-columns:1fr; gap:1.25rem; }
+  @media (min-width:860px){ .tl{ grid-template-columns:repeat(2,1fr); } }
+  .tl article{ background:var(--white); border:1px solid var(--line); border-radius:18px;
+    padding:1.4rem; box-shadow:var(--shadow); transition:transform .35s, box-shadow .35s; }
+  .tl article:hover{ transform:translateY(-5px); box-shadow:var(--shadow-lg); }
+  .tl .when{ font-size:.72rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--coral); }
+  .tl h3{ font-size:1.08rem; font-weight:600; margin-top:.35rem; }
+  .tl .org{ color:var(--ink-2); font-size:.88rem; font-weight:300; margin-bottom:.8rem; }
+  .tl ul{ list-style:none; }
+  .tl li{ color:var(--ink-2); font-weight:300; font-size:.88rem; padding-left:1.4rem;
+    position:relative; margin-bottom:.45rem; }
+  .tl li::before{ content:"→"; position:absolute; left:0; color:var(--coral); font-weight:600; }
+  .tl li strong{ color:var(--ink); font-weight:600; }
+
+  /* ---- skills ---- */
+  .skills{ display:grid; grid-template-columns:1fr; gap:1.25rem; }
+  @media (min-width:700px){ .skills{ grid-template-columns:repeat(3,1fr); } }
+  .skills div{ background:var(--white); border:1px solid var(--line); border-radius:16px;
+    padding:1.2rem; box-shadow:var(--shadow); }
+  .skills h4{ font-size:.74rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--coral); margin-bottom:.7rem; }
+  .skills .tags{ margin-top:0; }
+
+  /* ---- achievements / certificates ---- */
+  .ach{ display:grid; grid-template-columns:1fr; gap:1rem; }
+  @media (min-width:760px){ .ach{ grid-template-columns:repeat(2,1fr); } }
+  .ach div{ background:var(--white); border:1px solid var(--line); border-radius:14px;
+    padding:1.1rem 1.2rem; box-shadow:var(--shadow); display:flex; gap:.9rem;
+    transition:transform .3s, box-shadow .3s; }
+  .ach div:hover{ transform:translateY(-4px); box-shadow:var(--shadow-lg); }
+  .ach .yr{ font-size:.72rem; font-weight:700; color:var(--coral); white-space:nowrap;
+    padding-top:.22rem; }
+  .ach p{ font-size:.9rem; color:var(--ink-2); font-weight:300; }
+  .ach p strong{ color:var(--ink); font-weight:600; }
+  .certs{ display:grid; grid-template-columns:1fr; gap:1rem; }
+  @media (min-width:760px){ .certs{ grid-template-columns:repeat(3,1fr); } }
+  .certs div{ background:var(--white); border:1px solid var(--line); border-radius:14px;
+    padding:1.2rem; box-shadow:var(--shadow); transition:transform .3s, box-shadow .3s; }
+  .certs div:hover{ transform:translateY(-4px); box-shadow:var(--shadow-lg); }
+  .certs h4{ font-size:.98rem; font-weight:600; line-height:1.35; }
+  .certs .by{ color:var(--ink-2); font-size:.84rem; font-weight:300; margin-top:.3rem; }
+  .certs .dt{ color:var(--ink-3); font-size:.76rem; margin-top:.2rem; }
+
+  /* ---- contact band ---- */
+  .contact{ background:linear-gradient(135deg,#E2714A 0%,#D9613C 55%,#CE5733 100%);
+    color:#fff; text-align:center; }
+  .contact h2{ color:#fff; }
+  .contact .bar{ background:rgba(255,255,255,.85); }
+  .contact .head p{ color:rgba(255,255,255,.88); }
+  .cgrid{ display:grid; grid-template-columns:1fr; gap:1rem; max-width:54rem; margin:0 auto;
+    text-align:left; }
+  @media (min-width:760px){ .cgrid{ grid-template-columns:repeat(2,1fr); } }
+  .cgrid a,.cgrid div{ display:flex; align-items:center; gap:.9rem;
+    background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.26);
+    border-radius:12px; padding:.95rem 1.1rem; transition:background .25s, transform .25s; }
+  .cgrid a:hover{ background:rgba(255,255,255,.24); transform:translateY(-2px); }
+  .cgrid b{ display:block; font-weight:600; font-size:.92rem; }
+  .cgrid span{ display:block; font-size:.84rem; color:rgba(255,255,255,.82); font-weight:300;
+    word-break:break-word; }
+  .ic{ width:2.3rem; height:2.3rem; border-radius:50%; background:rgba(255,255,255,.22);
+    display:flex; align-items:center; justify-content:center; flex:0 0 auto; font-size:1rem; }
+  footer.end{ margin-top:3rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,.26);
+    font-size:.82rem; color:rgba(255,255,255,.8); }
+
+  /* ---- back to top ---- */
+  .top-btn{ position:fixed; right:1.25rem; z-index:80;
+    bottom:calc(1.25rem + env(safe-area-inset-bottom,0px));
+    width:3rem; height:3rem; border-radius:50%; background:var(--ink); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-size:1.15rem;
+    box-shadow:var(--shadow-lg); opacity:0; pointer-events:none;
+    transform:translateY(12px); transition:opacity .3s, transform .3s, background .25s; }
+  .top-btn.show{ opacity:1; pointer-events:auto; transform:none; }
+  .top-btn:hover{ background:var(--coral); }
+
+  /* ---- reveal ---- */
+  .js .rv{ opacity:0; transform:translateY(26px);
+    transition:opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
   .js .rv.in{ opacity:1; transform:none; }
-
   @media (prefers-reduced-motion:reduce){
     html{ scroll-behavior:auto; }
     .js .rv{ opacity:1 !important; transform:none !important; }
-    .status b{ animation:none; }
+    .ring,.dot{ animation:none !important; }
     *,*::before,*::after{ transition-duration:.01ms !important; }
   }
 </style>
 </head>
 <body>
 
-<header class="top wrap" id="top-bar">
-  <a class="brand" href="#top"><i></i>Ajay Mannolkar</a>
-  <nav class="links">
-    <a href="#projects">Projects</a>
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<nav class="nav wrap" id="nav">
+  <div class="inner nav-in">
+    <a class="logo" href="#home">Ajay Mannolkar</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero wrap" id="home">
+  <div class="inner hero-grid">
+    <div class="rv">
+      <p class="hello">Hi,</p>
+      <h1>I&apos;m <span>Ajay</span></h1>
+      <p class="role">M.Sc. Mechatronics &amp; Cyber-Physical Systems<br />at Deggendorf Institute of Technology</p>
+      <p class="blurb">Building autonomous robots and the embedded systems that make them move.</p>
+      <a class="btn" href="#contact">Get In Touch <span aria-hidden="true">→</span></a>
+    </div>
+
+    <div class="hero-photo rv">
+      <span class="ring r1" aria-hidden="true"></span>
+      <span class="ring r2" aria-hidden="true"></span>
+      <span class="dot d1" aria-hidden="true"></span>
+      <span class="dot d2" aria-hidden="true"></span>
+      <img src="./portrait.jpg" alt="Ajay Arjun Mannolkar" />
+    </div>
+
+    <div class="hero-keys rv">
+      <p class="where">Munich, Germany</p>
+      <h2>Autonomous Mobile Robots<br />Embedded Firmware &amp; IoT<br />Field Robotics &amp; Drones</h2>
+      <p>I build machines that have to work in an actual room — nine of them so far, from a
+        full-size humanoid to a warehouse robot with a Cartesian arm. Circuit design, firmware,
+        chassis, and the documentation that lets someone else rebuild it.</p>
+    </div>
+  </div>
 </header>
 
-<!-- ============ HERO ============ -->
-<section class="hero wrap" id="top">
-  <div class="grid-bg"></div>
-  <div class="inner" style="position:relative">
-    <div class="status rv"><b></b>Available from 1 October · Munich</div>
-    <h1 class="rv">Ajay<em>Mannolkar</em></h1>
-
-    <div class="hero-sub">
-      <p class="rv">Robotics and embedded systems. I build machines that have to work in an
-        actual room — <b>autonomous mobile robots, field robots, embedded firmware</b> — and I
-        am formalising a decade of hands-on building with an M.Sc. in Mechatronics and
-        Cyber-Physical Systems at Deggendorf Institute of Technology.</p>
-      <figure class="frame rv">
-        <img src="./portrait.jpg" alt="Ajay Arjun Mannolkar" />
-        <figcaption>Belagavi, India · 2023</figcaption>
-      </figure>
+<!-- ================= ABOUT ================= -->
+<section class="sec plain wrap" id="about">
+  <div class="inner">
+    <div class="head rv">
+      <h2>About Me</h2><div class="bar"></div>
+      <p>Robotics and embedded systems engineer, hardware-first, currently in Munich</p>
     </div>
 
-    <div class="telemetry rv">
-      <div><b>09</b><span>Robots built</span></div>
-      <div><b>50+</b><span>Kits shipped</span></div>
-      <div><b>200+</b><span>Students trained</span></div>
-      <div><b>203</b><span>Tutorials filmed</span></div>
-      <div><b>03</b><span>National awards</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PROJECTS ============ -->
-<section class="band wrap" id="projects">
-  <div class="inner">
-    <div class="sec-head rv"><h2>Projects</h2><span class="count">09 Records</span></div>
-
-    <article class="ds rv">
-      <div class="ds-head"><div class="ds-idx">01</div>
-        <div class="ds-title"><h3>Driver-Perspective Active Safety System</h3>
-          <div class="where">THD Germany · 2024–25 · VR driver training</div></div>
-        <span class="tag">Team lead</span></div>
-      <div class="ds-body">
-        <div class="ds-media"><video data-src="./vr-sim.mp4" poster="./p-vr.jpg" muted loop playsinline preload="none" aria-label="Driving through the simulated city with pedestrians on the footpath"></video></div>
-        <div class="ds-info">
-          <dl class="spec">
-            <dt>Role</dt><dd>Team lead · pedestrian &amp; traffic systems</dd>
-            <dt>Stack</dt><dd>Unity 3D, C#, NavMesh, Mixamo</dd>
-            <dt>Hardware</dt><dd>Meta Quest 3, HORI wheel &amp; pedals</dd>
-            <dt>Team</dt><dd>7 engineers</dd>
-          </dl>
-          <p>A four-level VR driving trainer — day, night, fog and rain, autonomous emergency
-            braking and ABS, crash detection with logged reaction times, and an
-            inverse-kinematics driver whose hands track the wheel.</p>
-          <p><strong>My part:</strong> Mixamo characters rigged with NavMesh agents, footpaths
-            baked as the only walkable surface, an AI spawner cloning pedestrians across the
-            city, and a wander script sending each to random footpath destinations — so the
-            streets fill with people who distract the driver without stepping into the road.</p>
-          <div class="ds-links">
-            <a class="lnk" href="https://github.com/technolkar/Driver-Perspective-Simulation-in-Unity" target="_blank" rel="noopener noreferrer">Repository</a>
-            <a class="lnk" href="./cvar-paper.pdf" target="_blank" rel="noopener noreferrer">Project paper</a>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <article class="ds rv">
-      <div class="ds-head"><div class="ds-idx">02</div>
-        <div class="ds-title"><h3>Autonomous Mobile Robot with ASRS &amp; Cartesian Arm</h3>
-          <div class="where">KLE College · 2022–23 · Bachelor&apos;s thesis</div></div>
-        <span class="tag">Team lead</span></div>
-      <div class="ds-body">
-        <div class="ds-media"><img src="./p-amr.jpg" alt="The completed autonomous mobile robot with its ASRS column" loading="lazy" /></div>
-        <div class="ds-info">
-          <dl class="spec">
-            <dt>Role</dt><dd>Team lead · circuits, hardware, firmware</dd>
-            <dt>Stack</dt><dd>Embedded C, Jetson Nano, IoT control</dd>
-            <dt>Sensing</dt><dd>LIDAR, ultrasonic, IR</dd>
-            <dt>Team</dt><dd>4 engineers</dd>
-          </dl>
-          <p>Industrial material-handling robot combining an automatic storage &amp; retrieval
-            system, forklift and Cartesian robotic arm. Sensing drives navigation and obstacle
-            avoidance through embedded control logic, on a battery-powered platform with an IoT
-            interface for remote operation.</p>
-          <p><strong>Currently rebuilding the navigation stack on ROS 2.</strong></p>
-          <div class="ds-links">
-            <a class="lnk" href="https://github.com/technolkar/Autonomous-Mobile-Robot-with-ASRS-Cartesian-Robot" target="_blank" rel="noopener noreferrer">Repository</a>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <article class="ds rv">
-      <div class="ds-head"><div class="ds-idx">03</div>
-        <div class="ds-title"><h3>Smart Solar-Powered Agriculture Robot</h3>
-          <div class="where">AICTE IDEA Lab · Government funded</div></div>
-        <span class="tag">Funded</span></div>
-      <div class="ds-body">
-        <div class="ds-media"><img src="./p-agri.jpg" alt="The solar agriculture robot with its seed and water tanks" loading="lazy" /></div>
-        <div class="ds-info">
-          <dl class="spec">
-            <dt>Role</dt><dd>Concept, circuit design, hardware integration</dd>
-            <dt>Stack</dt><dd>ESP32, Embedded C, IoT dashboard</dd>
-            <dt>Power</dt><dd>Solar with battery buffer</dd>
-            <dt>Tasks</dt><dd>Seeding, cutting, spraying, irrigation</dd>
-          </dl>
-          <p>Solar-powered field robot that reduces manual labour across four farm tasks.
-            Soil-moisture and humidity sensors feed an ESP32 driving automated control and a
-            real-time dashboard.</p>
-          <div class="ds-links">
-            <a class="lnk" href="https://github.com/technolkar/Multipurpose-Agriculture-Robot-" target="_blank" rel="noopener noreferrer">Repository</a>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <article class="ds rv">
-      <div class="ds-head"><div class="ds-idx">04</div>
-        <div class="ds-title"><h3>Virtual Doctor Robot</h3>
-          <div class="where">KLE College · 2021–22 · Telemedicine</div></div>
-        <span class="tag">1st Prize · National</span></div>
-      <div class="ds-body">
-        <div class="ds-media"><img src="./p-doctor.jpg" alt="The virtual doctor robot with illuminated medicine drawers" loading="lazy" /></div>
-        <div class="ds-info">
-          <dl class="spec">
-            <dt>Role</dt><dd>Team lead · wiring, firmware, hardware</dd>
-            <dt>Stack</dt><dd>Arduino, NodeMCU, Blynk IoT</dd>
-            <dt>Mechanics</dt><dd>4-wheel base, actuated drawers, 360° tablet mount</dd>
-            <dt>Award</dt><dd>1st Prize, Pioneer National-Level Technical Event</dd>
-          </dl>
-          <p>Contactless telemedicine robot built during the pandemic: medicine delivered by
-            actuator-controlled drawers, mobile app connectivity, and a rotating tablet
-            interface for live doctor–patient interaction.</p>
-          <div class="ds-links">
-            <a class="lnk" href="https://github.com/technolkar/Virtual-Doctor-Robot-" target="_blank" rel="noopener noreferrer">Repository</a>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <article class="ds rv">
-      <div class="ds-head"><div class="ds-idx">05</div>
-        <div class="ds-title"><h3>IoT Surveillance &amp; Manipulator Robot</h3>
-          <div class="where">Self-funded · Pick-and-place + patrol</div></div>
-        <span class="tag">Self-funded</span></div>
-      <div class="ds-body">
-        <div class="ds-media"><img src="./p-surveil.jpg" alt="The surveillance robot with camera mast and gripper arm" loading="lazy" /></div>
-        <div class="ds-info">
-          <dl class="spec">
-            <dt>Role</dt><dd>Concept, circuit design, full build</dd>
-            <dt>Stack</dt><dd>ESP32, Embedded C, Wi-Fi camera streaming</dd>
-            <dt>Manipulator</dt><dd>3-DOF servo arm</dd>
-            <dt>Modes</dt><dd>Manual and autonomous</dd>
-          </dl>
-          <p>Semi-autonomous robot combining surveillance, navigation and object manipulation.
-            Ultrasonic and IR sensing for line-following and obstacle avoidance, with live video
-            and a gripper arm for pick-and-place.</p>
-          <div class="ds-links">
-            <a class="lnk" href="https://github.com/technolkar/Multifunction-Semi-Autonomous-Vehicle-" target="_blank" rel="noopener noreferrer">Repository</a>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <article class="ds rv">
-      <div class="ds-head"><div class="ds-idx">06</div>
-        <div class="ds-title"><h3>IoT Voice-Controlled Humanoid Robot</h3>
-          <div class="where">Polytechnic · 2019–20 · Full human scale</div></div>
-        <span class="tag">2nd Prize · National</span></div>
-      <div class="ds-body">
-        <div class="ds-media"><img src="./p-humanoid.jpg" alt="The voice-controlled humanoid robot at full human scale" loading="lazy" /></div>
-        <div class="ds-info">
-          <dl class="spec">
-            <dt>Role</dt><dd>Team lead · hardware development</dd>
-            <dt>Stack</dt><dd>Arduino UNO, NodeMCU (ESP8266)</dd>
-            <dt>Actuation</dt><dd>L298 drivers, 16-channel servo controller, 2-axis arms</dd>
-            <dt>Team</dt><dd>9 students</dd>
-          </dl>
-          <p>Full-size humanoid with IoT connectivity for remote control, voice commands and
-            semi-autonomous navigation. The first machine I led start to finish, at seventeen.</p>
-          <div class="ds-links">
-            <a class="lnk" href="https://github.com/technolkar/Voice-Controlled-Humanoid-Robot-" target="_blank" rel="noopener noreferrer">Repository</a>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <article class="ds rv">
-      <div class="ds-head"><div class="ds-idx">07</div>
-        <div class="ds-title"><h3>Hexacopter Agriculture Drone</h3>
-          <div class="where">AICTE IDEA Lab · Government funded</div></div>
-        <span class="tag">Funded</span></div>
-      <div class="ds-body">
-        <div class="ds-media none">Flight footage<br />pending upload</div>
-        <div class="ds-info">
-          <dl class="spec">
-            <dt>Role</dt><dd>Hardware assembly, sensor calibration</dd>
-            <dt>Stack</dt><dd>Pixhawk flight controller, telemetry</dd>
-            <dt>Autonomy</dt><dd>Waypoint navigation, geo-fencing, return-to-home</dd>
-            <dt>Use</dt><dd>Precision field monitoring and spraying</dd>
-          </dl>
-          <p>Pixhawk-based hexacopter for precision agriculture. I assembled the airframe and
-            calibrated the sensor suite for stable autonomous flight and reliable telemetry.</p>
-          <div class="ds-links">
-            <a class="lnk" href="https://www.youtube.com/@TechnolkarInnovations" target="_blank" rel="noopener noreferrer">Channel</a>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <article class="ds rv">
-      <div class="ds-head"><div class="ds-idx">08</div>
-        <div class="ds-title"><h3>AR/VR &amp; Additive Manufacturing Case Studies</h3>
-          <div class="where">THD Germany · Coursework</div></div>
-        <span class="tag">THD</span></div>
-      <div class="ds-body">
-        <div class="ds-media"><img src="./p-additive.jpg" alt="A gold-finish 3D print made on the lab printers" loading="lazy" /></div>
-        <div class="ds-info">
-          <dl class="spec">
-            <dt>AR/VR</dt><dd>Car simulation and playable game levels in Unity</dd>
-            <dt>Additive</dt><dd>Print process studies on lab machines</dd>
-            <dt>Scripting</dt><dd>Lua — elliptical gear, sine tooth profile</dd>
-          </dl>
-          <p>Two AR/VR case studies alongside additive-manufacturing coursework. The gear was
-            generated parametrically in Lua rather than modelled by hand — change a parameter,
-            get a new tooth profile.</p>
-          <div class="ds-links"><span class="lnk off">Details on request</span></div>
-        </div>
-      </div>
-    </article>
-
-    <article class="ds rv">
-      <div class="ds-head"><div class="ds-idx">09</div>
-        <div class="ds-title"><h3>Technolkar — kits, workshops and 203 tutorials</h3>
-          <div class="where">India · 2023–24 · Founded and ran it</div></div>
-        <span class="tag">Founder</span></div>
-      <div class="ds-body">
-        <div class="ds-media"><img src="./p-teaching.jpg" alt="A full auditorium during one of the robotics workshops" loading="lazy" /></div>
-        <div class="ds-info">
-          <dl class="spec">
-            <dt>Shipped</dt><dd>50+ DIY electronics kits</dd>
-            <dt>Taught</dt><dd>200+ students, schools and colleges</dd>
-            <dt>Filmed</dt><dd>203 tutorials · 2,250 subscribers</dd>
-            <dt>Team</dt><dd>4 people</dd>
-          </dl>
-          <p>I designed the kits, wrote the firmware, soldered and packed them, filmed every
-            build and ran the workshops. Explaining hardware clearly to beginners turned out to
-            be as valuable a skill as building it.</p>
-          <div class="ds-links">
-            <a class="lnk" href="https://www.youtube.com/@TechnolkarInnovations" target="_blank" rel="noopener noreferrer">YouTube channel</a>
-          </div>
-        </div>
-      </div>
-    </article>
-  </div>
-</section>
-
-<!-- ============ ABOUT ============ -->
-<section class="band wrap" id="about">
-  <div class="inner">
-    <div class="sec-head rv"><h2>About</h2><span class="count">Background</span></div>
-    <div class="about-grid">
+    <div class="about">
       <div class="rv">
-        <p>I started in a polytechnic workshop in Belagavi, wiring servo controllers into a
-          humanoid robot with eight classmates. It won second prize at a national event, and it
-          set the pattern for everything since: <strong>learn the hardware by building the
-          hardware.</strong></p>
-        <p>After my bachelor's in mechanical engineering I founded <strong>Technolkar
-          Innovations</strong>, making DIY electronics kits for students. I ran the whole loop —
-          circuit design in Proteus, firmware in the Arduino IDE, testing, soldering, assembly,
-          packaging, documentation, the YouTube channel that marketed it, and the workshops.
-          Fifty-plus kits and two hundred-plus trained students later I paused it: the market
-          for that product was not there, and I wanted the theory behind what I had been
-          building by instinct.</p>
-        <p>So I came to Germany. At THD I work on <strong>cyber-physical systems</strong> — most
-          recently leading a seven-person team on a VR driver-training simulator, where I built
-          the pedestrian and traffic system.</p>
-        <p>I am looking for a <strong>master's thesis placement or internship</strong> in
+        <p>Hello — I&apos;m Ajay Mannolkar, a Mechatronics and Cyber-Physical Systems master&apos;s
+          student at Deggendorf Institute of Technology. I started in a polytechnic workshop in
+          Belagavi, wiring servo controllers into a full-size humanoid robot with eight
+          classmates. It won second prize at a national event, and it set the pattern for
+          everything since: <strong>learn the hardware by building the hardware.</strong></p>
+        <p>After my bachelor&apos;s in mechanical engineering I founded <strong>Technolkar
+          Innovations</strong>, making DIY electronics kits for students. I ran the whole loop
+          myself — circuit design in Proteus, firmware in the Arduino IDE, testing, soldering,
+          assembly, packaging, documentation, the YouTube channel that marketed it, and the
+          workshops that taught students to use the kits.</p>
+        <p>My work spans hardware and simulation: embedded C on ESP32 and Arduino, LIDAR and
+          ultrasonic sensing on mobile robots, Pixhawk flight control on a field drone, and
+          most recently a VR driver-training simulator at THD where I led a seven-person team
+          and built the pedestrian and traffic system. I am currently learning ROS 2 and
+          rebuilding my warehouse robot&apos;s navigation stack on it.</p>
+        <p>I am looking for a <strong>master&apos;s thesis placement or internship</strong> in
           robotics or embedded systems, in or around Munich.</p>
+
+        <div class="stats">
+          <div><b>09</b><span>Robots built</span></div>
+          <div><b>50+</b><span>Kits shipped</span></div>
+          <div><b>200+</b><span>Students</span></div>
+          <div><b>203</b><span>Tutorials</span></div>
+        </div>
       </div>
-      <aside class="facts rv">
-        <dl>
-          <dt>Based</dt><dd>Munich, Germany</dd>
-          <dt>Studying</dt><dd>M.Sc. Mechatronics &amp; Cyber-Physical Systems, THD</dd>
-          <dt>Since</dt><dd>October 2024</dd>
-          <dt>Available</dt><dd>From 1 October</dd>
-          <dt>Seeking</dt><dd>Thesis · Internship · Werkstudent</dd>
-          <dt>Languages</dt><dd>English fluent<br />German A1, working toward B1<br />Hindi · Kannada · Marathi</dd>
-        </dl>
+
+      <aside class="rv">
+        <p class="side-title">Languages</p>
+        <div class="lang"><b>English</b><span>Fluent</span></div>
+        <div class="lang"><b>German</b><span>A1 → B1</span></div>
+        <div class="lang"><b>Hindi</b><span>Native</span></div>
+        <div class="lang"><b>Kannada</b><span>Native</span></div>
+        <div class="lang"><b>Marathi</b><span>Native</span></div>
+
+        <p class="side-title" style="margin-top:1.75rem">Availability</p>
+        <div class="lang"><b>Start date</b><span>1 October</span></div>
+        <div class="lang"><b>Looking for</b><span>Thesis · Internship</span></div>
+        <div class="lang"><b>Based in</b><span>Munich</span></div>
       </aside>
     </div>
   </div>
 </section>
 
-<!-- ============ EXPERIENCE ============ -->
-<section class="band wrap" id="experience">
+<!-- ================= EXPERIENCE ================= -->
+<section class="sec wrap" id="experience">
   <div class="inner">
-    <div class="sec-head rv"><h2>Experience</h2><span class="count">03 Roles</span></div>
-
-    <div class="row rv">
-      <div class="when">Jul 2023 — Sep 2024</div>
-      <div><h3>Founder &amp; Product Developer</h3>
-        <div class="org">Technolkar Innovations, Belagavi, India — paused since relocating to Germany</div>
-        <ul>
-          <li>Designed and tested IoT and microcontroller-driven DIY educational kits in Proteus and the Arduino IDE.</li>
-          <li>Owned the full electronics workflow: prototyping, testing, soldering, assembly, packaging and documentation.</li>
-          <li>Led a four-person team on circuit optimisation and embedded integration.</li>
-          <li>Ran workshops across schools and colleges, training <strong>200+ students</strong>.</li>
-          <li>Shipped <strong>50+ kits</strong> and built the Technolkar brand for affordable STEM hardware.</li>
-        </ul></div>
+    <div class="head rv">
+      <h2>Education &amp; Experience</h2><div class="bar"></div>
+      <p>Where I studied and where I built things</p>
     </div>
 
-    <div class="row rv">
-      <div class="when">Oct 2022 — Jun 2023</div>
-      <div><h3>Student Lab Head &amp; Technical Mentor</h3>
+    <div class="tl">
+      <article class="rv">
+        <div class="when">Oct 2024 — Present</div>
+        <h3>M.Sc. Mechatronics and Cyber-Physical Systems</h3>
+        <div class="org">Deggendorf Institute of Technology, Germany</div>
+        <ul>
+          <li>Led a seven-person team building a VR driver-training simulator in Unity.</li>
+          <li>AR/VR and additive-manufacturing case studies; parametric gear design in Lua.</li>
+        </ul>
+      </article>
+
+      <article class="rv">
+        <div class="when">Jul 2023 — Sep 2024</div>
+        <h3>Founder &amp; Product Developer</h3>
+        <div class="org">Technolkar Innovations, Belagavi, India</div>
+        <ul>
+          <li>Designed and tested IoT and microcontroller DIY kits in Proteus and the Arduino IDE.</li>
+          <li>Owned prototyping, testing, soldering, assembly, packaging and documentation.</li>
+          <li>Led a four-person team on circuit optimisation and embedded integration.</li>
+          <li>Trained <strong>200+ students</strong> through hands-on workshops.</li>
+          <li>Shipped <strong>50+ kits</strong> and built a recognised regional STEM brand.</li>
+        </ul>
+      </article>
+
+      <article class="rv">
+        <div class="when">Oct 2022 — Jun 2023</div>
+        <h3>Student Lab Head &amp; Technical Mentor</h3>
         <div class="org">AICTE IDEA Lab, KLE Technological University, India</div>
         <ul>
           <li>Trained students on 3D printing, laser cutting and CNC equipment.</li>
-          <li>Collaborated across embedded, IoT and robotics teams on design, debugging and prototype testing.</li>
-          <li>Delivered rapid-prototyping workshops and managed lab resource accessibility.</li>
-        </ul></div>
-    </div>
+          <li>Collaborated across embedded, IoT and robotics teams on design and prototype testing.</li>
+          <li>Delivered rapid-prototyping workshops and managed lab resources.</li>
+        </ul>
+      </article>
 
-    <div class="row rv">
-      <div class="when">Aug — Sep 2022</div>
-      <div><h3>Intern — Industrial Automation</h3>
+      <article class="rv">
+        <div class="when">Aug — Sep 2022</div>
+        <h3>Intern — Industrial Automation</h3>
         <div class="org">Bemco Hydraulics Pvt. Ltd., India</div>
         <ul>
           <li>Built and wired control panel boards for industrial hydraulic automation systems.</li>
-          <li>Learned how Siemens PLC-controlled hydraulic systems are assembled, wired and commissioned.</li>
-          <li>Worked to industrial wiring and documentation standards under engineer supervision.</li>
-        </ul></div>
+          <li>Learned how Siemens PLC-controlled hydraulic systems are assembled and commissioned.</li>
+          <li>Worked to industrial wiring and documentation standards under supervision.</li>
+        </ul>
+      </article>
+
+      <article class="rv">
+        <div class="when">2020 — 2023</div>
+        <h3>B.E. Mechanical Engineering — 8.2 CGPA</h3>
+        <div class="org">Visvesvaraya Technological University · KLE College of Engineering &amp; Technology, Belagavi</div>
+        <ul><li>Final-year thesis: autonomous mobile robot with ASRS and Cartesian arm.</li></ul>
+      </article>
+
+      <article class="rv">
+        <div class="when">2017 — 2020</div>
+        <h3>Diploma in Mechatronics — 95%</h3>
+        <div class="org">M. L. Bharatesh Polytechnic, Belagavi</div>
+        <ul><li><strong>Best Outgoing Student of the Year.</strong></li></ul>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ============ SKILLS ============ -->
-<section class="band wrap" id="skills">
+<!-- ================= PROJECTS ================= -->
+<section class="sec plain wrap" id="projects">
   <div class="inner">
-    <div class="sec-head rv"><h2>Skills</h2><span class="count">Toolchain</span></div>
-    <div class="sk rv">
-      <div><h3>Embedded &amp; Hardware</h3><p>ESP32 / ESP8266 · Arduino · Raspberry Pi · Jetson Nano · Pixhawk · PCB design · Soldering · Sensor calibration · Battery and power management · Control panel wiring</p></div>
-      <div><h3>Programming</h3><p>Embedded C · C++ · Python · C# (Unity) · Lua · Git · Ubuntu / Linux</p></div>
-      <div><h3>Design &amp; Simulation</h3><p>SolidWorks · AutoCAD · KiCad · Proteus · MATLAB · LabVIEW · Unity 3D</p></div>
-      <div><h3>Fabrication</h3><p>3D printing · Laser cutting · CNC · UltiMaker Cura · RDWorks</p></div>
-      <div><h3>Currently learning</h3><p>ROS 2 · Nav2 · Gazebo · SLAM — rebuilding my AMR's navigation stack properly</p></div>
-      <div><h3>Language</h3><p>English fluent · German A1, working toward B1 · Hindi, Kannada, Marathi</p></div>
+    <div class="head rv">
+      <h2>Featured Projects</h2><div class="bar"></div>
+      <p>Robots, field machines and simulators — most of them physical hardware</p>
+    </div>
+
+    <div class="cards">
+
+      <article class="card rv">
+        <div class="card-img"><video data-src="./vr-sim.mp4" poster="./p-vr.jpg" muted loop playsinline preload="none" aria-label="VR driving simulation with pedestrians"></video></div>
+        <div class="card-body">
+          <div class="cats"><span class="cat">AR/VR</span><span class="cat">Unity</span><span class="cat">Team lead</span></div>
+          <h3>Driver-Perspective Active Safety System</h3>
+          <p class="desc">A four-level VR driving trainer at THD — day, night, fog and rain, AEB and ABS,
+            crash detection with logged reaction times, running on a Meta Quest 3 with a racing wheel
+            and pedals. Seven-person team; I led it.</p>
+          <p class="klabel">Key contributions:</p>
+          <ul>
+            <li>Built the pedestrian and traffic system end to end.</li>
+            <li>Mixamo characters rigged with NavMesh agents; footpaths baked as the only walkable surface.</li>
+            <li>AI spawner cloning pedestrians across the city, with a wander script keeping them off the road.</li>
+          </ul>
+          <div class="tags"><span class="tag">Unity 3D</span><span class="tag">C#</span><span class="tag">NavMesh</span><span class="tag">Mixamo</span><span class="tag">Meta Quest 3</span></div>
+          <div class="acts">
+            <a class="act" href="./cvar-paper.pdf" target="_blank" rel="noopener noreferrer">Project paper</a>
+            <a class="act out" href="https://github.com/technolkar/Driver-Perspective-Simulation-in-Unity" target="_blank" rel="noopener noreferrer">Code</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card rv">
+        <div class="card-img"><img src="./p-amr.jpg" alt="Autonomous mobile robot with ASRS column" loading="lazy" /></div>
+        <div class="card-body">
+          <div class="cats"><span class="cat">Robotics</span><span class="cat">Intralogistics</span><span class="cat">Team lead</span></div>
+          <h3>Autonomous Mobile Robot with ASRS &amp; Cartesian Arm</h3>
+          <p class="desc">Industrial material-handling robot combining an automatic storage &amp; retrieval
+            system, forklift and Cartesian arm. Bachelor&apos;s thesis, team of four.</p>
+          <p class="klabel">Key features:</p>
+          <ul>
+            <li>LIDAR, ultrasonic and IR sensing for navigation and obstacle avoidance.</li>
+            <li>Battery-powered platform with an IoT interface for remote operation.</li>
+            <li>Currently rebuilding the navigation stack on ROS 2.</li>
+          </ul>
+          <div class="tags"><span class="tag">Embedded C</span><span class="tag">Jetson Nano</span><span class="tag">LIDAR</span><span class="tag">IoT</span></div>
+          <div class="acts"><a class="act out" href="https://github.com/technolkar/Autonomous-Mobile-Robot-with-ASRS-Cartesian-Robot" target="_blank" rel="noopener noreferrer">Code</a></div>
+        </div>
+      </article>
+
+      <article class="card rv">
+        <div class="card-img"><img src="./p-agri.jpg" alt="Solar-powered agriculture robot" loading="lazy" /></div>
+        <div class="card-body">
+          <div class="cats"><span class="cat">Field robotics</span><span class="cat">IoT</span><span class="cat">AICTE funded</span></div>
+          <h3>Smart Solar-Powered Agriculture Robot</h3>
+          <p class="desc">Solar-powered field robot reducing manual labour across seeding, cutting,
+            spraying and irrigation.</p>
+          <p class="klabel">Key features:</p>
+          <ul>
+            <li>Soil-moisture and humidity sensors feeding an ESP32 for automated control.</li>
+            <li>Real-time IoT dashboard for field monitoring.</li>
+            <li>I did concept development, circuit design and full hardware integration.</li>
+          </ul>
+          <div class="tags"><span class="tag">ESP32</span><span class="tag">Embedded C</span><span class="tag">Solar</span><span class="tag">IoT</span></div>
+          <div class="acts"><a class="act out" href="https://github.com/technolkar/Multipurpose-Agriculture-Robot-" target="_blank" rel="noopener noreferrer">Code</a></div>
+        </div>
+      </article>
+
+      <article class="card rv">
+        <div class="card-img"><img src="./p-doctor.jpg" alt="Virtual doctor robot with illuminated medicine drawers" loading="lazy" /></div>
+        <div class="card-body">
+          <div class="cats"><span class="cat">Healthcare</span><span class="cat">IoT</span><span class="cat">1st Prize</span></div>
+          <h3>Virtual Doctor Robot</h3>
+          <p class="desc">Contactless telemedicine robot built during the pandemic. Team of four; I led it.
+            First prize at the Pioneer National-Level Technical Event.</p>
+          <p class="klabel">Key features:</p>
+          <ul>
+            <li>Four-wheel mobile base with actuator-controlled medicine drawers.</li>
+            <li>Arduino–NodeMCU control with mobile app connectivity.</li>
+            <li>360° tablet mount for live doctor–patient interaction.</li>
+          </ul>
+          <div class="tags"><span class="tag">Arduino</span><span class="tag">NodeMCU</span><span class="tag">Blynk IoT</span></div>
+          <div class="acts"><a class="act out" href="https://github.com/technolkar/Virtual-Doctor-Robot-" target="_blank" rel="noopener noreferrer">Code</a></div>
+        </div>
+      </article>
+
+      <article class="card rv">
+        <div class="card-img"><img src="./p-surveil.jpg" alt="Surveillance robot with camera mast and gripper arm" loading="lazy" /></div>
+        <div class="card-body">
+          <div class="cats"><span class="cat">Robotics</span><span class="cat">Perception</span><span class="cat">Self-funded</span></div>
+          <h3>IoT Surveillance &amp; Manipulator Robot</h3>
+          <p class="desc">Semi-autonomous robot combining surveillance, navigation and object
+            manipulation, switchable between manual and autonomous modes.</p>
+          <p class="klabel">Key features:</p>
+          <ul>
+            <li>Ultrasonic and IR sensing for line-following and obstacle avoidance.</li>
+            <li>Live Wi-Fi camera streaming for remote patrol.</li>
+            <li>3-DOF servo arm for pick-and-place.</li>
+          </ul>
+          <div class="tags"><span class="tag">ESP32</span><span class="tag">Embedded C</span><span class="tag">Camera streaming</span></div>
+          <div class="acts"><a class="act out" href="https://github.com/technolkar/Multifunction-Semi-Autonomous-Vehicle-" target="_blank" rel="noopener noreferrer">Code</a></div>
+        </div>
+      </article>
+
+      <article class="card rv">
+        <div class="card-img"><img src="./p-humanoid.jpg" alt="Full-size voice-controlled humanoid robot" loading="lazy" /></div>
+        <div class="card-body">
+          <div class="cats"><span class="cat">Humanoid</span><span class="cat">Voice control</span><span class="cat">2nd Prize</span></div>
+          <h3>IoT Voice-Controlled Humanoid Robot</h3>
+          <p class="desc">A full-size humanoid with IoT connectivity for remote control, voice commands
+            and semi-autonomous navigation. Team of nine; I led the build. Second prize at the
+            Aavishkar National-Level Technical Event.</p>
+          <p class="klabel">Key features:</p>
+          <ul>
+            <li>Arduino UNO + NodeMCU (ESP8266) control architecture.</li>
+            <li>L298 motor drivers and a 16-channel servo controller for two-axis arms.</li>
+            <li>The first machine I led start to finish.</li>
+          </ul>
+          <div class="tags"><span class="tag">Arduino UNO</span><span class="tag">ESP8266</span><span class="tag">Servo control</span></div>
+          <div class="acts"><a class="act out" href="https://github.com/technolkar/Voice-Controlled-Humanoid-Robot-" target="_blank" rel="noopener noreferrer">Code</a></div>
+        </div>
+      </article>
+
+      <article class="card rv">
+        <div class="card-img none">Flight footage<br />coming soon</div>
+        <div class="card-body">
+          <div class="cats"><span class="cat">UAV</span><span class="cat">Flight control</span><span class="cat">AICTE funded</span></div>
+          <h3>Hexacopter Agriculture Drone</h3>
+          <p class="desc">Pixhawk-based hexacopter for precision agriculture — autonomous field
+            monitoring and spraying.</p>
+          <p class="klabel">Key features:</p>
+          <ul>
+            <li>Waypoint navigation, geo-fencing and return-to-home.</li>
+            <li>Hardware assembly and sensor calibration for reliable telemetry.</li>
+          </ul>
+          <div class="tags"><span class="tag">Pixhawk</span><span class="tag">UAV</span><span class="tag">Telemetry</span></div>
+          <div class="acts"><a class="act out" href="https://www.youtube.com/@TechnolkarInnovations" target="_blank" rel="noopener noreferrer">Channel</a></div>
+        </div>
+      </article>
+
+      <article class="card rv">
+        <div class="card-img"><img src="./p-additive.jpg" alt="Gold-finish 3D print made on the lab printers" loading="lazy" /></div>
+        <div class="card-body">
+          <div class="cats"><span class="cat">AR/VR</span><span class="cat">Additive manufacturing</span></div>
+          <h3>AR/VR &amp; Additive Manufacturing Case Studies</h3>
+          <p class="desc">Coursework at THD across two AR/VR case studies and additive manufacturing.</p>
+          <p class="klabel">Key features:</p>
+          <ul>
+            <li>A car simulation and playable game levels built in Unity.</li>
+            <li>Lua scripting generating an elliptical gear with a sine tooth profile —
+              change a parameter, get a new tooth.</li>
+          </ul>
+          <div class="tags"><span class="tag">Unity 3D</span><span class="tag">Lua</span><span class="tag">Parametric design</span></div>
+        </div>
+      </article>
+
+      <article class="card rv">
+        <div class="card-img"><img src="./p-teaching.jpg" alt="Full auditorium at a robotics workshop" loading="lazy" /></div>
+        <div class="card-body">
+          <div class="cats"><span class="cat">Product</span><span class="cat">Teaching</span><span class="cat">Founder</span></div>
+          <h3>Technolkar — Kits, Workshops &amp; 203 Tutorials</h3>
+          <p class="desc">I designed the kits, wrote the firmware, soldered and packed them, filmed every
+            build and ran the workshops.</p>
+          <p class="klabel">Key outcomes:</p>
+          <ul>
+            <li><strong>50+ kits</strong> designed, manufactured and shipped.</li>
+            <li><strong>200+ students</strong> trained across schools and colleges.</li>
+            <li><strong>203 tutorials</strong> filmed for an audience of 2,250 subscribers.</li>
+          </ul>
+          <div class="tags"><span class="tag">Product design</span><span class="tag">Teaching</span><span class="tag">Documentation</span></div>
+          <div class="acts"><a class="act" href="https://www.youtube.com/@TechnolkarInnovations" target="_blank" rel="noopener noreferrer">YouTube</a></div>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
 
-<!-- ============ EDUCATION ============ -->
-<section class="band wrap" id="education">
+<!-- ================= SKILLS ================= -->
+<section class="sec wrap" id="skills">
   <div class="inner">
-    <div class="sec-head rv"><h2>Education &amp; Awards</h2><span class="count">Record</span></div>
-
-    <div class="row rv"><div class="when">Oct 2024 — Present</div>
-      <div><h3>M.Sc. Mechatronics and Cyber-Physical Systems</h3>
-        <div class="org">Deggendorf Institute of Technology, Germany</div></div></div>
-    <div class="row rv"><div class="when">2020 — 2023</div>
-      <div><h3>B.E. Mechanical Engineering — 8.2 CGPA</h3>
-        <div class="org">Visvesvaraya Technological University, KLE College of Engineering &amp; Technology, Belagavi</div></div></div>
-    <div class="row rv"><div class="when">2017 — 2020</div>
-      <div><h3>Diploma in Mechatronics — 95%</h3>
-        <div class="org">M. L. Bharatesh Polytechnic, Belagavi — Best Outgoing Student of the Year</div></div></div>
-
-    <div class="row rv"><div class="when">Awards</div>
-      <div>
-        <img src="./p-gokart.jpg" alt="The Vegatam go-kart" loading="lazy"
-             style="max-width:24rem;margin-bottom:1.1rem;filter:grayscale(.15)" />
-        <ul>
-          <li><strong>All-India Rank 8</strong> — Go-Kart Racing Championship (AIRC), Ajeenkya DY Patil University, Pune, 2023</li>
-          <li><strong>1st Prize</strong> — Pioneer National-Level Technical Event, Virtual Doctor Robot</li>
-          <li><strong>2nd Prize</strong> — Aavishkar National-Level Technical Event, Voice-Controlled Humanoid Robot</li>
-          <li>Multiple first prizes at engineering and diploma project exhibitions; presented at <strong>100+ technical paper events</strong>, 2017–2023</li>
-          <li>MATLAB Reinforcement Learning Onramp — MathWorks, 2023</li>
-          <li>Certified Training, PCB Design &amp; Manufacturing — Embesys Training Foundation, 2018</li>
-        </ul></div></div>
+    <div class="head rv">
+      <h2>Technical Skills</h2><div class="bar"></div>
+      <p>What I actually work with, grouped honestly</p>
+    </div>
+    <div class="skills">
+      <div class="rv"><h4>Embedded &amp; Hardware</h4><div class="tags">
+        <span class="tag">ESP32</span><span class="tag">ESP8266</span><span class="tag">Arduino</span>
+        <span class="tag">Raspberry Pi</span><span class="tag">Jetson Nano</span><span class="tag">Pixhawk</span>
+        <span class="tag">PCB design</span><span class="tag">Soldering</span><span class="tag">Sensor calibration</span>
+        <span class="tag">Power management</span></div></div>
+      <div class="rv"><h4>Programming</h4><div class="tags">
+        <span class="tag">Embedded C</span><span class="tag">C++</span><span class="tag">Python</span>
+        <span class="tag">C# (Unity)</span><span class="tag">Lua</span><span class="tag">Git</span>
+        <span class="tag">Linux</span></div></div>
+      <div class="rv"><h4>Design &amp; Simulation</h4><div class="tags">
+        <span class="tag">SolidWorks</span><span class="tag">AutoCAD</span><span class="tag">KiCad</span>
+        <span class="tag">Proteus</span><span class="tag">MATLAB</span><span class="tag">LabVIEW</span>
+        <span class="tag">Unity 3D</span></div></div>
+      <div class="rv"><h4>Sensing &amp; Perception</h4><div class="tags">
+        <span class="tag">LIDAR</span><span class="tag">Ultrasonic</span><span class="tag">IR</span>
+        <span class="tag">Camera streaming</span><span class="tag">NavMesh navigation</span></div></div>
+      <div class="rv"><h4>Fabrication</h4><div class="tags">
+        <span class="tag">3D printing</span><span class="tag">Laser cutting</span><span class="tag">CNC</span>
+        <span class="tag">Cura</span><span class="tag">RDWorks</span>
+        <span class="tag">Control panel wiring</span></div></div>
+      <div class="rv"><h4>Currently Learning</h4><div class="tags">
+        <span class="tag">ROS 2</span><span class="tag">Nav2</span><span class="tag">Gazebo</span>
+        <span class="tag">SLAM</span><span class="tag">German B1</span></div></div>
+    </div>
   </div>
 </section>
 
-<!-- ============ CONTACT ============ -->
-<section class="band wrap" id="contact">
+<!-- ================= ACHIEVEMENTS ================= -->
+<section class="sec plain wrap" id="achievements">
   <div class="inner">
-    <div class="contact-box rv">
-      <p class="mono" style="margin-bottom:1rem">Open to thesis, internship and Werkstudent roles</p>
-      <h2>Let&apos;s build<br />something real</h2>
-      <a class="mail" href="mailto:ajayarjunmannolkar@gmail.com">ajayarjunmannolkar@gmail.com</a>
-      <div class="elsewhere">
-        <a class="lnk" href="https://github.com/technolkar" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a class="lnk" href="https://www.linkedin.com/in/ajaymannolkar" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a class="lnk" href="https://www.youtube.com/@TechnolkarInnovations" target="_blank" rel="noopener noreferrer">YouTube</a>
+    <div class="head rv">
+      <h2>Achievements</h2><div class="bar"></div>
+      <p>Competitions, prizes and recognition</p>
+    </div>
+    <div class="ach">
+      <div class="rv"><span class="yr">2023</span><p><strong>All-India Rank 8</strong> — Go-Kart Racing Championship (AIRC), Ajeenkya DY Patil University, Pune</p></div>
+      <div class="rv"><span class="yr">2022</span><p><strong>1st Prize</strong> — Pioneer National-Level Technical Event, for the Virtual Doctor Robot</p></div>
+      <div class="rv"><span class="yr">2020</span><p><strong>2nd Prize</strong> — Aavishkar National-Level Technical Event, for the Voice-Controlled Humanoid Robot</p></div>
+      <div class="rv"><span class="yr">2020</span><p><strong>Best Outgoing Student of the Year</strong> — M. L. Bharatesh Polytechnic, Belagavi</p></div>
+      <div class="rv"><span class="yr">2017–23</span><p>Multiple first prizes at engineering and diploma project exhibitions; presented at <strong>100+ technical paper events</strong></p></div>
+      <div class="rv"><span class="yr">2022–23</span><p><strong>Two AICTE-funded projects</strong> — the solar agriculture robot and the hexacopter drone</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CERTIFICATES ================= -->
+<section class="sec wrap" id="certificates">
+  <div class="inner">
+    <div class="head rv">
+      <h2>Certificates</h2><div class="bar"></div>
+      <p>Formal training and certifications</p>
+    </div>
+    <div class="certs">
+      <div class="rv">
+        <h4>MATLAB Reinforcement Learning Onramp</h4>
+        <p class="by">MathWorks</p><p class="dt">2023</p>
+      </div>
+      <div class="rv">
+        <h4>PCB Design &amp; Manufacturing</h4>
+        <p class="by">Embesys Training Foundation, Belagavi</p><p class="dt">September 2018</p>
+      </div>
+      <div class="rv">
+        <h4>Best Outgoing Student of the Year</h4>
+        <p class="by">M. L. Bharatesh Polytechnic, Belagavi</p><p class="dt">2019–20</p>
       </div>
     </div>
-    <footer class="end">
-      <span class="mono">Ajay Arjun Mannolkar — Munich</span>
-      <span class="mono">If it involves real hardware, I want to hear about it</span>
-    </footer>
   </div>
 </section>
+
+<!-- ================= CONTACT ================= -->
+<section class="sec contact wrap" id="contact">
+  <div class="inner">
+    <div class="head rv">
+      <h2>Get In Touch</h2><div class="bar"></div>
+      <p>Let&apos;s talk robotics, embedded systems, a thesis placement — or just say hello</p>
+    </div>
+    <div class="cgrid">
+      <a class="rv" href="mailto:ajayarjunmannolkar@gmail.com">
+        <span class="ic" aria-hidden="true">✉</span>
+        <span><b>Email</b><span>ajayarjunmannolkar@gmail.com</span></span></a>
+      <div class="rv">
+        <span class="ic" aria-hidden="true">◎</span>
+        <span><b>Location</b><span>Munich, Germany</span></span></div>
+      <a class="rv" href="https://www.linkedin.com/in/ajaymannolkar" target="_blank" rel="noopener noreferrer">
+        <span class="ic" aria-hidden="true">in</span>
+        <span><b>LinkedIn</b><span>linkedin.com/in/ajaymannolkar</span></span></a>
+      <a class="rv" href="https://github.com/technolkar" target="_blank" rel="noopener noreferrer">
+        <span class="ic" aria-hidden="true">&lt;/&gt;</span>
+        <span><b>GitHub</b><span>github.com/technolkar</span></span></a>
+      <a class="rv" href="https://www.youtube.com/@TechnolkarInnovations" target="_blank" rel="noopener noreferrer">
+        <span class="ic" aria-hidden="true">▶</span>
+        <span><b>YouTube</b><span>203 build tutorials</span></span></a>
+      <div class="rv">
+        <span class="ic" aria-hidden="true">●</span>
+        <span><b>Available</b><span>From 1 October — thesis or internship</span></span></div>
+    </div>
+    <footer class="end">© 2026 Ajay Arjun Mannolkar — Munich, Germany</footer>
+  </div>
+</section>
+
+<a class="top-btn" id="topBtn" href="#home" aria-label="Back to top">↑</a>
 
 <script>
 document.documentElement.classList.add('js');
 (function(){
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  var bar = document.getElementById('top-bar');
-  function onScroll(){ bar.classList.toggle('stuck', window.scrollY > 40); }
-  window.addEventListener('scroll', onScroll, { passive:true }); onScroll();
-
-  var items = document.querySelectorAll('.rv');
-  if ('IntersectionObserver' in window){
+  /* ---------- scroll reveal ----------
+     The reference site leaves blank screens when you jump by anchor or scroll fast,
+     because nothing reveals until an observer fires. Three guards here:
+       1. anything already in view at load is revealed immediately
+       2. a hashchange / anchor jump reveals whatever landed on screen
+       3. a timeout backstop reveals everything regardless                     */
+  var items = [].slice.call(document.querySelectorAll('.rv'));
+  function showVisible(){
+    items.forEach(function(el){
+      var r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight * 0.98 && r.bottom > 0) el.classList.add('in');
+    });
+  }
+  if ('IntersectionObserver' in window && !reduce){
     var io = new IntersectionObserver(function(es){
-      es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { rootMargin:'0px 0px -6% 0px', threshold:0.04 });
+      es.forEach(function(e){
+        if (e.isIntersecting){
+          var sibs = [].slice.call(e.target.parentNode.children).indexOf(e.target);
+          e.target.style.transitionDelay = Math.min(Math.max(sibs,0),5) * 70 + 'ms';
+          e.target.classList.add('in'); io.unobserve(e.target);
+        }
+      });
+    }, { rootMargin:'0px 0px -5% 0px', threshold:0.03 });
     items.forEach(function(el){ io.observe(el); });
-    setTimeout(function(){ items.forEach(function(el){
-      if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('in'); }); }, 1200);
-  } else { items.forEach(function(el){ el.classList.add('in'); }); }
+    showVisible();
+    window.addEventListener('hashchange', function(){ setTimeout(showVisible, 420); });
+    document.addEventListener('click', function(e){
+      var a = e.target.closest && e.target.closest('a[href^="#"]');
+      if (a) setTimeout(showVisible, 500);
+    });
+    setTimeout(function(){ items.forEach(function(el){ el.classList.add('in'); }); }, 4000);
+  } else {
+    items.forEach(function(el){ el.classList.add('in'); });
+  }
 
+  /* ---------- nav state + active section + back to top ---------- */
+  var nav = document.getElementById('nav');
+  var links = [].slice.call(document.querySelectorAll('.nav-links a'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  var topBtn = document.getElementById('topBtn');
+  var ticking = false;
+  function onScroll(){
+    if (ticking) return; ticking = true;
+    window.requestAnimationFrame(function(){
+      var y = window.scrollY;
+      nav.classList.toggle('stuck', y > 20);
+      topBtn.classList.toggle('show', y > 500);
+      var mark = y + window.innerHeight * 0.3, best = 0;
+      secs.forEach(function(s,i){ if (s && s.offsetTop <= mark) best = i; });
+      links.forEach(function(a,i){ a.classList.toggle('on', i === best); });
+      ticking = false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  window.addEventListener('resize', onScroll, { passive:true });
+  onScroll();
+
+  /* ---------- play the clip only while on screen ---------- */
   var vids = document.querySelectorAll('video[data-src]');
   if (vids.length && !reduce && 'IntersectionObserver' in window){
     var vo = new IntersectionObserver(function(es){
-      es.forEach(function(e){ var v = e.target;
+      es.forEach(function(e){
+        var v = e.target;
         if (e.isIntersecting){ if (!v.src) v.src = v.dataset.src;
           var pr = v.play(); if (pr && pr.catch) pr.catch(function(){}); }
-        else if (!v.paused){ v.pause(); } });
+        else if (!v.paused){ v.pause(); }
+      });
     }, { threshold:0.25 });
     vids.forEach(function(v){ vo.observe(v); });
   }
