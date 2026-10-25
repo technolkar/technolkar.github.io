@@ -203,6 +203,40 @@
   .tl li::before{ content:"→"; position:absolute; left:0; color:var(--coral); font-weight:600; }
   .tl li strong{ color:var(--ink); font-weight:600; }
 
+  /* ---- education timeline ---- */
+  .edu{ position:relative; max-width:64rem; margin:0 auto; }
+  .edu::before{ content:""; position:absolute; left:9px; top:.5rem; bottom:.5rem; width:2px;
+    background:var(--line); }
+  .edu-item{ position:relative; padding-left:2.8rem; margin-bottom:1.5rem; }
+  .edu-node{ position:absolute; left:0; top:1.9rem; width:20px; height:20px; border-radius:50%;
+    background:var(--white); border:1px solid var(--line); display:flex; align-items:center;
+    justify-content:center; }
+  .edu-node::after{ content:""; width:8px; height:8px; border-radius:50%; background:var(--coral); }
+  .edu-card{ background:var(--white); border:1px solid var(--line); border-radius:16px;
+    padding:1.3rem 1.4rem; box-shadow:var(--shadow);
+    transition:transform .35s ease, box-shadow .35s ease; }
+  .edu-card:hover{ transform:translateY(-5px); box-shadow:var(--shadow-lg); }
+  .edu-top{ display:flex; align-items:flex-start; justify-content:space-between; gap:1rem;
+    flex-wrap:wrap; }
+  .edu-top h3{ font-size:1.12rem; font-weight:700; line-height:1.3; letter-spacing:-.01em;
+    flex:1 1 12rem; }
+  .edu-top .dates{ font-size:.86rem; font-weight:600; color:var(--ink-2); white-space:nowrap; }
+  .edu-card .inst{ color:var(--coral); font-weight:500; font-size:.96rem; margin-top:.45rem;
+    line-height:1.45; }
+  .edu-card .meta{ font-size:.92rem; margin-top:.5rem; }
+  .edu-card .meta span{ color:var(--ink-2); }
+  .edu-card .grade{ color:var(--ink-2); font-size:.92rem; margin-top:.15rem; }
+  .edu-card .thesis{ font-style:italic; color:var(--ink-2); font-size:.9rem; margin-top:.6rem; }
+  @media (min-width:900px){
+    .edu::before{ left:50%; transform:translateX(-50%); }
+    .edu-item{ width:calc(50% - 2.6rem); padding-left:0; margin-bottom:2rem; }
+    .edu-item:nth-child(odd){ margin-right:auto; text-align:left; }
+    .edu-item:nth-child(even){ margin-left:auto; }
+    .edu-node{ top:2rem; }
+    .edu-item:nth-child(odd) .edu-node{ left:auto; right:-3.45rem; }
+    .edu-item:nth-child(even) .edu-node{ left:-3.45rem; }
+  }
+
   /* ---- skills ---- */
   .skills{ display:grid; grid-template-columns:1fr; gap:1.25rem; }
   @media (min-width:700px){ .skills{ grid-template-columns:repeat(3,1fr); } }
@@ -238,18 +272,35 @@
   .contact h2{ color:#fff; }
   .contact .bar{ background:rgba(255,255,255,.85); }
   .contact .head p{ color:rgba(255,255,255,.88); }
-  .cgrid{ display:grid; grid-template-columns:1fr; gap:1rem; max-width:54rem; margin:0 auto;
-    text-align:left; }
-  @media (min-width:760px){ .cgrid{ grid-template-columns:repeat(2,1fr); } }
-  .cgrid a,.cgrid div{ display:flex; align-items:center; gap:.9rem;
-    background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.26);
-    border-radius:12px; padding:.95rem 1.1rem; transition:background .25s, transform .25s; }
-  .cgrid a:hover{ background:rgba(255,255,255,.24); transform:translateY(-2px); }
-  .cgrid b{ display:block; font-weight:600; font-size:.92rem; }
-  .cgrid span{ display:block; font-size:.84rem; color:rgba(255,255,255,.82); font-weight:300;
-    word-break:break-word; }
-  .ic{ width:2.3rem; height:2.3rem; border-radius:50%; background:rgba(255,255,255,.22);
-    display:flex; align-items:center; justify-content:center; flex:0 0 auto; font-size:1rem; }
+  .cgrid{ display:grid; grid-template-columns:1fr; gap:2rem 3rem; max-width:62rem;
+    margin:0 auto; text-align:left; align-items:start; }
+  @media (min-width:860px){ .cgrid{ grid-template-columns:1fr 1fr; } }
+  .cdetail{ display:flex; align-items:center; gap:1.1rem; margin-bottom:1.75rem;
+    color:#fff; transition:transform .25s; }
+  a.cdetail:hover{ transform:translateX(3px); }
+  a.cdetail:hover .cv{ text-decoration:underline; }
+  .cdetail:last-child{ margin-bottom:0; }
+  .ic{ width:3.1rem; height:3.1rem; border-radius:50%; background:rgba(255,255,255,.2);
+    display:flex; align-items:center; justify-content:center; flex:0 0 auto;
+    transition:background .25s; }
+  a.cdetail:hover .ic{ background:rgba(255,255,255,.32); }
+  .ic svg{ width:1.3rem; height:1.3rem; fill:none; stroke:#fff; stroke-width:1.9;
+    stroke-linecap:round; stroke-linejoin:round; }
+  .ic svg.solid{ fill:#fff; stroke:none; }
+  .cdetail b{ display:block; font-weight:700; font-size:1.02rem; }
+  .cdetail .cv{ display:block; font-size:.92rem; color:rgba(255,255,255,.88);
+    font-weight:300; word-break:break-word; }
+  .cbar{ display:flex; align-items:center; gap:.95rem; color:#fff;
+    background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.3);
+    border-radius:12px; padding:1.05rem 1.2rem; margin-bottom:1rem; font-weight:500;
+    transition:background .25s, transform .25s, border-color .25s; }
+  .cbar:last-child{ margin-bottom:0; }
+  .cbar:hover{ background:rgba(255,255,255,.28); border-color:rgba(255,255,255,.55);
+    transform:translateY(-2px); }
+  .cbar svg{ width:1.3rem; height:1.3rem; fill:#fff; flex:0 0 auto; }
+  .cbar .sub{ margin-left:auto; font-size:.82rem; font-weight:300;
+    color:rgba(255,255,255,.8); white-space:nowrap; }
+  @media (max-width:420px){ .cbar .sub{ display:none; } }
   footer.end{ margin-top:3rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,.26);
     font-size:.82rem; color:rgba(255,255,255,.8); }
 
@@ -283,6 +334,7 @@
     <div class="nav-links" id="navLinks">
       <a href="#home">Home</a>
       <a href="#about">About</a>
+      <a href="#education">Education</a>
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
@@ -375,25 +427,67 @@
   </div>
 </section>
 
+<!-- ================= EDUCATION ================= -->
+<section class="sec wrap" id="education">
+  <div class="inner">
+    <div class="head rv">
+      <h2>Education</h2><div class="bar"></div>
+      <p>Mechatronics all the way through — diploma, bachelor&apos;s, master&apos;s</p>
+    </div>
+
+    <div class="edu">
+      <div class="edu-item rv">
+        <span class="edu-node" aria-hidden="true"></span>
+        <div class="edu-card">
+          <div class="edu-top">
+            <h3>Master in Mechatronics and Cyber-Physical Systems</h3>
+            <span class="dates">Oct 2024 — Present</span>
+          </div>
+          <p class="inst">Deggendorf Institute of Technology (THD), Germany</p>
+          <p class="meta">Focus: <span>Robotics, Embedded Systems &amp; AR/VR</span></p>
+          <p class="thesis">Led a seven-person team building a VR driver-training simulator in Unity</p>
+        </div>
+      </div>
+
+      <div class="edu-item rv">
+        <span class="edu-node" aria-hidden="true"></span>
+        <div class="edu-card">
+          <div class="edu-top">
+            <h3>Bachelor in Mechanical Engineering</h3>
+            <span class="dates">2020 — 2023</span>
+          </div>
+          <p class="inst">KLE College of Engineering &amp; Technology, Belagavi, India</p>
+          <p class="meta">Visvesvaraya Technological University</p>
+          <p class="grade">Grade: 8.2 CGPA</p>
+          <p class="thesis">Bachelor Thesis: Autonomous Mobile Robot with ASRS &amp; Cartesian Arm</p>
+        </div>
+      </div>
+
+      <div class="edu-item rv">
+        <span class="edu-node" aria-hidden="true"></span>
+        <div class="edu-card">
+          <div class="edu-top">
+            <h3>Diploma in Mechatronics</h3>
+            <span class="dates">2017 — 2020</span>
+          </div>
+          <p class="inst">M. L. Bharatesh Polytechnic, Belagavi, India</p>
+          <p class="grade">Grade: 95%</p>
+          <p class="thesis">Best Outgoing Student of the Year</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= EXPERIENCE ================= -->
 <section class="sec wrap" id="experience">
   <div class="inner">
     <div class="head rv">
-      <h2>Education &amp; Experience</h2><div class="bar"></div>
-      <p>Where I studied and where I built things</p>
+      <h2>Experience</h2><div class="bar"></div>
+      <p>Where I have built things, taught and shipped product</p>
     </div>
 
     <div class="tl">
-      <article class="rv">
-        <div class="when">Oct 2024 — Present</div>
-        <h3>M.Sc. Mechatronics and Cyber-Physical Systems</h3>
-        <div class="org">Deggendorf Institute of Technology, Germany</div>
-        <ul>
-          <li>Led a seven-person team building a VR driver-training simulator in Unity.</li>
-          <li>AR/VR and additive-manufacturing case studies; parametric gear design in Lua.</li>
-        </ul>
-      </article>
-
       <article class="rv">
         <div class="when">Jul 2023 — Sep 2024</div>
         <h3>Founder &amp; Product Developer</h3>
@@ -429,19 +523,6 @@
         </ul>
       </article>
 
-      <article class="rv">
-        <div class="when">2020 — 2023</div>
-        <h3>B.E. Mechanical Engineering — 8.2 CGPA</h3>
-        <div class="org">Visvesvaraya Technological University · KLE College of Engineering &amp; Technology, Belagavi</div>
-        <ul><li>Final-year thesis: autonomous mobile robot with ASRS and Cartesian arm.</li></ul>
-      </article>
-
-      <article class="rv">
-        <div class="when">2017 — 2020</div>
-        <h3>Diploma in Mechatronics — 95%</h3>
-        <div class="org">M. L. Bharatesh Polytechnic, Belagavi</div>
-        <ul><li><strong>Best Outgoing Student of the Year.</strong></li></ul>
-      </article>
     </div>
   </div>
 </section>
@@ -709,24 +790,29 @@
       <p>Let&apos;s talk robotics, embedded systems, a thesis placement — or just say hello</p>
     </div>
     <div class="cgrid">
-      <a class="rv" href="mailto:ajayarjunmannolkar@gmail.com">
-        <span class="ic" aria-hidden="true">✉</span>
-        <span><b>Email</b><span>ajayarjunmannolkar@gmail.com</span></span></a>
       <div class="rv">
-        <span class="ic" aria-hidden="true">◎</span>
-        <span><b>Location</b><span>Munich, Germany</span></span></div>
-      <a class="rv" href="https://www.linkedin.com/in/ajaymannolkar" target="_blank" rel="noopener noreferrer">
-        <span class="ic" aria-hidden="true">in</span>
-        <span><b>LinkedIn</b><span>linkedin.com/in/ajaymannolkar</span></span></a>
-      <a class="rv" href="https://github.com/technolkar" target="_blank" rel="noopener noreferrer">
-        <span class="ic" aria-hidden="true">&lt;/&gt;</span>
-        <span><b>GitHub</b><span>github.com/technolkar</span></span></a>
-      <a class="rv" href="https://www.youtube.com/@TechnolkarInnovations" target="_blank" rel="noopener noreferrer">
-        <span class="ic" aria-hidden="true">▶</span>
-        <span><b>YouTube</b><span>203 build tutorials</span></span></a>
+        <a class="cdetail" href="mailto:ajayarjunmannolkar@gmail.com">
+          <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg></span>
+          <span><b>Email</b><span class="cv">ajayarjunmannolkar@gmail.com</span></span>
+        </a>
+        <div class="cdetail">
+          <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
+          <span><b>Location</b><span class="cv">Munich, Deutschland</span></span>
+        </div>
+        <div class="cdetail">
+          <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3.5v3M16 3.5v3"/></svg></span>
+          <span><b>Available</b><span class="cv">From 1 October — thesis or internship</span></span>
+        </div>
+      </div>
+
       <div class="rv">
-        <span class="ic" aria-hidden="true">●</span>
-        <span><b>Available</b><span>From 1 October — thesis or internship</span></span></div>
+        <a class="cbar" href="https://www.linkedin.com/in/ajaymannolkar" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001A2.5 2.5 0 0 1 4.98 3.5zM2.4 21h5.16V9H2.4v12zM9.6 9h4.95v1.64h.07c.69-1.25 2.38-2.57 4.9-2.57 5.24 0 6.2 3.3 6.2 7.6V21h-5.16v-4.6c0-1.1-.02-2.5-1.56-2.5-1.56 0-1.8 1.19-1.8 2.42V21H9.6V9z"/></svg><span>LinkedIn</span><span class="sub">/in/ajaymannolkar</span></a>
+        <a class="cbar" href="https://github.com/technolkar" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .8a11.2 11.2 0 0 0-3.54 21.83c.56.1.77-.24.77-.54v-1.9c-3.12.68-3.78-1.5-3.78-1.5-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.68.08-.68 1.13.08 1.72 1.16 1.72 1.16 1 1.72 2.63 1.22 3.27.94.1-.73.39-1.22.71-1.5-2.49-.28-5.11-1.25-5.11-5.56 0-1.23.44-2.23 1.16-3.02-.12-.29-.5-1.44.11-3 0 0 .95-.3 3.1 1.15a10.7 10.7 0 0 1 5.65 0c2.15-1.46 3.1-1.16 3.1-1.16.61 1.57.23 2.72.11 3.01.72.79 1.16 1.79 1.16 3.02 0 4.32-2.63 5.27-5.13 5.55.4.35.76 1.03.76 2.08v3.09c0 .3.2.65.78.54A11.2 11.2 0 0 0 12 .8z"/></svg><span>GitHub</span><span class="sub">@technolkar</span></a>
+        <a class="cbar" href="https://www.youtube.com/@TechnolkarInnovations" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.9a3 3 0 0 0-2.1-2.1C19.5 4.3 12 4.3 12 4.3s-7.5 0-9.4.5A3 3 0 0 0 .5 6.9C0 8.8 0 12 0 12s0 3.2.5 5.1a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.1.5-5.1s0-3.2-.5-5.1zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg><span>YouTube</span><span class="sub">203 tutorials</span></a>
+      </div>
     </div>
     <footer class="end">© 2026 Ajay Arjun Mannolkar — Munich, Germany</footer>
   </div>
