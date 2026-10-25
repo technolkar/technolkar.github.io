@@ -160,6 +160,9 @@
   .card-img img,.card-img video{ width:100%; height:100%; object-fit:cover;
     transition:transform .6s ease; }
   .card:hover .card-img img{ transform:scale(1.04); }
+  .card-img.fit{ aspect-ratio:1.415; background:var(--white); }
+  .card-img.fit img{ object-fit:contain; }
+  .card:hover .card-img.fit img{ transform:none; }
   .card-img.none{ display:flex; align-items:center; justify-content:center; text-align:center;
     font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3);
     padding:1.5rem; }
@@ -553,7 +556,7 @@
       </article>
 
       <article class="card rv">
-        <div class="card-img"><img src="./p-amr.jpg" alt="Autonomous mobile robot with ASRS column" loading="lazy" /></div>
+        <div class="card-img fit"><img src="./p-amr.jpg" alt="Autonomous mobile robot with ASRS column — finished machine, welded frame, chain drive and the project team" loading="lazy" /></div>
         <div class="card-body">
           <div class="cats"><span class="cat">Robotics</span><span class="cat">Intralogistics</span><span class="cat">Team lead</span></div>
           <h3>Autonomous Mobile Robot with ASRS &amp; Cartesian Arm</h3>
@@ -571,7 +574,7 @@
       </article>
 
       <article class="card rv">
-        <div class="card-img"><img src="./p-agri.jpg" alt="Solar-powered agriculture robot" loading="lazy" /></div>
+        <div class="card-img"><img src="./p-agri.jpg" alt="Solar-powered agriculture robot — drive motors, battery and rotary cutting blade" loading="lazy" /></div>
         <div class="card-body">
           <div class="cats"><span class="cat">Field robotics</span><span class="cat">IoT</span><span class="cat">AICTE funded</span></div>
           <h3>Smart Solar-Powered Agriculture Robot</h3>
@@ -589,7 +592,7 @@
       </article>
 
       <article class="card rv">
-        <div class="card-img"><img src="./p-doctor.jpg" alt="Virtual doctor robot with illuminated medicine drawers" loading="lazy" /></div>
+        <div class="card-img fit"><img src="./p-doctor.jpg" alt="Virtual Doctor Robot — illuminated medicine drawers, drive base, CAD model and the finished robot" loading="lazy" /></div>
         <div class="card-body">
           <div class="cats"><span class="cat">Healthcare</span><span class="cat">IoT</span><span class="cat">1st Prize</span></div>
           <h3>Virtual Doctor Robot</h3>
